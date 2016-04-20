@@ -29,6 +29,7 @@
 		BB6CBA941CC7248700193825 /* ChatOtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */; };
 		BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA971CC73F0D00193825 /* APIManager.swift */; };
 		BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */; };
+		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatOtherTableViewCell.xib; sourceTree = "<group>"; };
 		BB6CBA971CC73F0D00193825 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMeTableViewCell.xib; sourceTree = "<group>"; };
+		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				BB6CBA7A1CC7236C00193825 /* Chat.swift */,
 				BB6CBA7E1CC7238000193825 /* Event.swift */,
+				BB6CBA9D1CC7A5CB00193825 /* Location.swift */,
 				BB6CBA7C1CC7237500193825 /* User.swift */,
 			);
 			name = models;
@@ -357,6 +360,7 @@
 				BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */,
 				BB6CBA931CC7248700193825 /* ChatTableViewCell.swift in Sources */,
 				BB6CBA491CC7218900193825 /* AppDelegate.swift in Sources */,
+				BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */,
 				BB6CBA7F1CC7238000193825 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,5 +9,22 @@
 import Foundation
 
 class APIManager {
-    //
+    //singleton
+    
+    func getUser(userId :Int) -> User? {
+        return nil
+    }
+    
+    func getEvents(location :Location) -> [Event] {
+        return []
+    }
+    
+    func getEvents(userId :Int) -> [Event] {
+        return []
+    }
+    
+    func getEvent(eventId :Int) -> Event? {
+        return nil
+    }
+    
 }

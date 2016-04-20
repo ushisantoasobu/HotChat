@@ -14,6 +14,19 @@
 		BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA511CC7218900193825 /* LaunchScreen.storyboard */; };
 		BB6CBA5E1CC7218900193825 /* HotChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA5D1CC7218900193825 /* HotChatTests.swift */; };
 		BB6CBA691CC7218A00193825 /* HotChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA681CC7218A00193825 /* HotChatUITests.swift */; };
+		BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA7A1CC7236C00193825 /* Chat.swift */; };
+		BB6CBA7D1CC7237500193825 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA7C1CC7237500193825 /* User.swift */; };
+		BB6CBA7F1CC7238000193825 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA7E1CC7238000193825 /* Event.swift */; };
+		BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA801CC723E000193825 /* EventListTableViewController.swift */; };
+		BB6CBA831CC723E000193825 /* EventListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA811CC723E000193825 /* EventListTableViewController.xib */; };
+		BB6CBA861CC7240100193825 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA841CC7240100193825 /* ChatListViewController.swift */; };
+		BB6CBA871CC7240100193825 /* ChatListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA851CC7240100193825 /* ChatListViewController.xib */; };
+		BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA881CC7243400193825 /* SearchStartViewController.swift */; };
+		BB6CBA8B1CC7243400193825 /* SearchStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA891CC7243400193825 /* SearchStartViewController.xib */; };
+		BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */; };
+		BB6CBA901CC7247800193825 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */; };
+		BB6CBA931CC7248700193825 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */; };
+		BB6CBA941CC7248700193825 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +60,19 @@
 		BB6CBA641CC7218A00193825 /* HotChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6CBA681CC7218A00193825 /* HotChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotChatUITests.swift; sourceTree = "<group>"; };
 		BB6CBA6A1CC7218A00193825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6CBA7A1CC7236C00193825 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		BB6CBA7C1CC7237500193825 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BB6CBA7E1CC7238000193825 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BB6CBA801CC723E000193825 /* EventListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
+		BB6CBA811CC723E000193825 /* EventListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListTableViewController.xib; sourceTree = "<group>"; };
+		BB6CBA841CC7240100193825 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		BB6CBA851CC7240100193825 /* ChatListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListViewController.xib; sourceTree = "<group>"; };
+		BB6CBA881CC7243400193825 /* SearchStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStartViewController.swift; sourceTree = "<group>"; };
+		BB6CBA891CC7243400193825 /* SearchStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchStartViewController.xib; sourceTree = "<group>"; };
+		BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
+		BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				BB6CBA481CC7218900193825 /* AppDelegate.swift */,
-				BB6CBA4A1CC7218900193825 /* ViewController.swift */,
-				BB6CBA4C1CC7218900193825 /* Main.storyboard */,
 				BB6CBA4F1CC7218900193825 /* Assets.xcassets */,
-				BB6CBA511CC7218900193825 /* LaunchScreen.storyboard */,
 				BB6CBA541CC7218900193825 /* Info.plist */,
+				BB6CBA511CC7218900193825 /* LaunchScreen.storyboard */,
+				BB6CBA4C1CC7218900193825 /* Main.storyboard */,
+				BB6CBA781CC7232700193825 /* models */,
+				BB6CBA4A1CC7218900193825 /* ViewController.swift */,
+				BB6CBA791CC7232F00193825 /* viewcontrollers */,
+				BB6CBA8C1CC7244C00193825 /* views */,
 			);
 			path = HotChat;
 			sourceTree = "<group>";
@@ -123,6 +152,40 @@
 				BB6CBA6A1CC7218A00193825 /* Info.plist */,
 			);
 			path = HotChatUITests;
+			sourceTree = "<group>";
+		};
+		BB6CBA781CC7232700193825 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BB6CBA7A1CC7236C00193825 /* Chat.swift */,
+				BB6CBA7E1CC7238000193825 /* Event.swift */,
+				BB6CBA7C1CC7237500193825 /* User.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		BB6CBA791CC7232F00193825 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				BB6CBA841CC7240100193825 /* ChatListViewController.swift */,
+				BB6CBA851CC7240100193825 /* ChatListViewController.xib */,
+				BB6CBA801CC723E000193825 /* EventListTableViewController.swift */,
+				BB6CBA811CC723E000193825 /* EventListTableViewController.xib */,
+				BB6CBA881CC7243400193825 /* SearchStartViewController.swift */,
+				BB6CBA891CC7243400193825 /* SearchStartViewController.xib */,
+			);
+			name = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		BB6CBA8C1CC7244C00193825 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */,
+				BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */,
+				BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */,
+				BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,9 +292,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6CBA831CC723E000193825 /* EventListTableViewController.xib in Resources */,
+				BB6CBA941CC7248700193825 /* ChatTableViewCell.xib in Resources */,
+				BB6CBA8B1CC7243400193825 /* SearchStartViewController.xib in Resources */,
 				BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */,
 				BB6CBA501CC7218900193825 /* Assets.xcassets in Resources */,
+				BB6CBA871CC7240100193825 /* ChatListViewController.xib in Resources */,
 				BB6CBA4E1CC7218900193825 /* Main.storyboard in Resources */,
+				BB6CBA901CC7247800193825 /* EventTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +324,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */,
+				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
+				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
+				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,
+				BB6CBA861CC7240100193825 /* ChatListViewController.swift in Sources */,
+				BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */,
+				BB6CBA931CC7248700193825 /* ChatTableViewCell.swift in Sources */,
 				BB6CBA491CC7218900193825 /* AppDelegate.swift in Sources */,
+				BB6CBA7F1CC7238000193825 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +558,7 @@
 				BB6CBA6F1CC7218A00193825 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB6CBA701CC7218A00193825 /* Build configuration list for PBXNativeTarget "HotChatTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +567,7 @@
 				BB6CBA721CC7218A00193825 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB6CBA731CC7218A00193825 /* Build configuration list for PBXNativeTarget "HotChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +576,7 @@
 				BB6CBA751CC7218A00193825 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

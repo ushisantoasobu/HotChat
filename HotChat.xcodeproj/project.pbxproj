@@ -26,7 +26,9 @@
 		BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */; };
 		BB6CBA901CC7247800193825 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */; };
 		BB6CBA931CC7248700193825 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */; };
-		BB6CBA941CC7248700193825 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */; };
+		BB6CBA941CC7248700193825 /* ChatOtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */; };
+		BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA971CC73F0D00193825 /* APIManager.swift */; };
+		BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +74,9 @@
 		BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
-		BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatOtherTableViewCell.xib; sourceTree = "<group>"; };
+		BB6CBA971CC73F0D00193825 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +129,11 @@
 			children = (
 				BB6CBA481CC7218900193825 /* AppDelegate.swift */,
 				BB6CBA4F1CC7218900193825 /* Assets.xcassets */,
+				BB6CBA961CC73EEC00193825 /* helpers */,
 				BB6CBA541CC7218900193825 /* Info.plist */,
 				BB6CBA511CC7218900193825 /* LaunchScreen.storyboard */,
 				BB6CBA4C1CC7218900193825 /* Main.storyboard */,
+				BB6CBA951CC73ED700193825 /* managers */,
 				BB6CBA781CC7232700193825 /* models */,
 				BB6CBA4A1CC7218900193825 /* ViewController.swift */,
 				BB6CBA791CC7232F00193825 /* viewcontrollers */,
@@ -181,11 +187,27 @@
 			isa = PBXGroup;
 			children = (
 				BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */,
-				BB6CBA921CC7248700193825 /* ChatTableViewCell.xib */,
+				BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */,
+				BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */,
 				BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */,
 				BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		BB6CBA951CC73ED700193825 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				BB6CBA971CC73F0D00193825 /* APIManager.swift */,
+			);
+			name = managers;
+			sourceTree = "<group>";
+		};
+		BB6CBA961CC73EEC00193825 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +315,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6CBA831CC723E000193825 /* EventListTableViewController.xib in Resources */,
-				BB6CBA941CC7248700193825 /* ChatTableViewCell.xib in Resources */,
+				BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */,
+				BB6CBA941CC7248700193825 /* ChatOtherTableViewCell.xib in Resources */,
 				BB6CBA8B1CC7243400193825 /* SearchStartViewController.xib in Resources */,
 				BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */,
 				BB6CBA501CC7218900193825 /* Assets.xcassets in Resources */,
@@ -328,6 +351,7 @@
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
+				BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */,
 				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,
 				BB6CBA861CC7240100193825 /* ChatListViewController.swift in Sources */,
 				BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */,

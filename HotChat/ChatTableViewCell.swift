@@ -21,4 +21,8 @@ class ChatTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setChat(chat :Chat) {
+        //
+    }
+    
 }

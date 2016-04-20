@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct User {
+    var identifier :Int
+    var name :String
+    var imageUrl :String
+    var openFb :Bool
+}

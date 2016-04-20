@@ -10,6 +10,8 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
 
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,10 @@ class EventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setEvent(event :Event) {
+        
     }
     
 }

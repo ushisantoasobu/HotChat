@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+// ???
+typealias Location = (String, String) // (lattitude, )
+
+struct Event {
+    var name :String
+    var date :NSDate
+    var location :Location
+    var creator :User
+    var chatCount :Int
+    var expire :NSDate
+}

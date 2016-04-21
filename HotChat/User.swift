@@ -9,8 +9,8 @@
 import Foundation
 
 struct User {
-    var identifier :Int
-    var name :String
-    var imageUrl :String
-    var openFb :Bool
+    var identifier :Int = 0
+    var name :String = ""
+    var imageUrl :String = ""
+    var openFb :Bool = false
 }

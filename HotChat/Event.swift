@@ -8,11 +8,16 @@
 
 import Foundation
 
+enum EventSearchType {
+    case Location
+    case History
+}
+
 struct Event {
-    var name :String
-    var date :NSDate
-    var location :Location
-    var creator :User
-    var chatCount :Int
-    var expire :NSDate
+    var name :String = ""
+    var date :NSDate = NSDate()
+    var location :Location = Location()
+    var creator :User = User()
+    var chatCount :Int = 0
+    var expire :NSDate = NSDate()
 }

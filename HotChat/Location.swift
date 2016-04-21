@@ -9,6 +9,6 @@
 import Foundation
 
 struct Location {
-    var longitude :String
-    var latitude :String
+    var longitude :String = ""
+    var latitude :String = ""
 }

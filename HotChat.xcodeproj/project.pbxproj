@@ -30,6 +30,8 @@
 		BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA971CC73F0D00193825 /* APIManager.swift */; };
 		BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */; };
 		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
+		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
+		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		BB6CBA971CC73F0D00193825 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMeTableViewCell.xib; sourceTree = "<group>"; };
 		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
+		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 			children = (
 				BB6CBA841CC7240100193825 /* ChatListViewController.swift */,
 				BB6CBA851CC7240100193825 /* ChatListViewController.xib */,
+				CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */,
+				CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */,
 				BB6CBA801CC723E000193825 /* EventListTableViewController.swift */,
 				BB6CBA811CC723E000193825 /* EventListTableViewController.xib */,
 				BB6CBA881CC7243400193825 /* SearchStartViewController.swift */,
@@ -322,6 +328,7 @@
 				BB6CBA941CC7248700193825 /* ChatOtherTableViewCell.xib in Resources */,
 				BB6CBA8B1CC7243400193825 /* SearchStartViewController.xib in Resources */,
 				BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */,
+				CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */,
 				BB6CBA501CC7218900193825 /* Assets.xcassets in Resources */,
 				BB6CBA871CC7240100193825 /* ChatListViewController.xib in Resources */,
 				BB6CBA4E1CC7218900193825 /* Main.storyboard in Resources */,
@@ -351,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */,
+				CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */,
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,

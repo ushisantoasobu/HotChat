@@ -13,23 +13,51 @@ class SearchStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupHeader()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - private
+
+    private func setupHeader() {
+        self.navigationItem.title = "イベントを探す"
+
+        let userButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit,
+                                         target: self, action: #selector(SearchStartViewController.userButtonTapped))
+        self.navigationItem.leftBarButtonItem = userButton
+
+        let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
+                                         target: self, action: #selector(SearchStartViewController.createButtonTapped))
+        self.navigationItem.rightBarButtonItems = [createButton]
+    }
+
+    func userButtonTapped() {
+        print("user")
+
+    }
+
+    func createButtonTapped() {
+        print("create")
+
+    }
     
 
-    /*
-    // MARK: - Navigation
+    // MARK: - IB actions
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func locationButtonTapped(sender: AnyObject) {
+        let vc = EventListTableViewController()
+        vc.type = .Location
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
+
+    @IBAction func historyButtonTapped(sender: AnyObject) {
+        let vc = EventListTableViewController()
+        vc.type = .History
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }

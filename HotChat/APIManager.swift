@@ -9,18 +9,45 @@
 import Foundation
 
 class APIManager {
-    //singleton
-    
+
+    // MARK: - singleton
+
+    class var sharedInstance : APIManager {
+        struct Static {
+            static let instance : APIManager = APIManager()
+        }
+        return Static.instance
+    }
+
+    // MARK: - public
+
     func getUser(userId :Int) -> User? {
         return nil
     }
     
     func getEvents(location :Location) -> [Event] {
-        return []
+
+        var event1 = Event()
+        event1.name = "Sun kil moon 単独公演"
+        event1.chatCount = 3
+
+        var event2 = Event()
+        event2.name = "Spiritualized - AcousticMainlines"
+        event2.chatCount = 8
+
+        return [
+            event1, event2
+        ]
     }
     
     func getEvents(userId :Int) -> [Event] {
-        return []
+        var event1 = Event()
+        event1.name = "ドリップコーヒー選手権 2016"
+        event1.chatCount = 34
+
+        return [
+            event1
+        ]
     }
     
     func getEvent(eventId :Int) -> Event? {

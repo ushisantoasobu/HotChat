@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,13 +7,59 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EventTableViewCell" customModule="HotChat" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="EventTableViewCell" customModule="HotChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="イベント名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH9-d8-Awy">
+                        <rect key="frame" x="8" y="34" width="304" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="OUu-Ef-ai2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-Vk-UcK">
+                        <rect key="frame" x="232" y="8" width="80" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0Av-Uc-szl"/>
+                            <constraint firstAttribute="width" constant="80" id="ENk-7o-M4i"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.7254902124" blue="0.27843138579999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/12/24 23:45 作成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qks-OI-Ifm">
+                        <rect key="frame" x="8" y="8" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="sCz-J4-loW"/>
+                            <constraint firstAttribute="width" constant="160" id="vZC-2c-dnB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qks-OI-Ifm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="95q-CY-pOM"/>
+                    <constraint firstItem="qks-OI-Ifm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="FIu-Dp-abo"/>
+                    <constraint firstItem="ET9-Vk-UcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="I2E-Kb-vcX"/>
+                    <constraint firstAttribute="trailing" secondItem="ET9-Vk-UcK" secondAttribute="trailing" constant="8" id="Jan-6Q-tO0"/>
+                    <constraint firstAttribute="bottom" secondItem="cH9-d8-Awy" secondAttribute="bottom" constant="8" id="Ube-Oy-uGi"/>
+                    <constraint firstAttribute="trailing" secondItem="cH9-d8-Awy" secondAttribute="trailing" constant="8" id="lRy-hX-uZL"/>
+                    <constraint firstItem="cH9-d8-Awy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rjO-w5-xbv"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="chatCountLabel" destination="ET9-Vk-UcK" id="jx8-Oo-j2v"/>
+                <outlet property="createdDateLabel" destination="qks-OI-Ifm" id="KyF-OO-VoI"/>
+                <outlet property="nameLabel" destination="cH9-d8-Awy" id="DqU-Ux-Bmy"/>
+            </connections>
+            <point key="canvasLocation" x="228" y="312"/>
         </tableViewCell>
     </objects>
 </document>

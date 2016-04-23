@@ -32,6 +32,7 @@
 		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
+		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
+		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				BB6CBA481CC7218900193825 /* AppDelegate.swift */,
 				BB6CBA4F1CC7218900193825 /* Assets.xcassets */,
+				CDE5663B1CCB003E00226321 /* extensions */,
 				BB6CBA961CC73EEC00193825 /* helpers */,
 				BB6CBA541CC7218900193825 /* Info.plist */,
 				BB6CBA511CC7218900193825 /* LaunchScreen.storyboard */,
@@ -217,6 +220,14 @@
 			children = (
 			);
 			name = helpers;
+			sourceTree = "<group>";
+		};
+		CDE5663B1CCB003E00226321 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDE5663C1CCB005B00226321 /* UIViewExtension.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +372,7 @@
 				CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */,
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
+				CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
 				BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */,
 				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,

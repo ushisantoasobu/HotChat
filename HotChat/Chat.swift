@@ -9,9 +9,9 @@
 import Foundation
 
 struct Chat {
-    var user :User
-    var message :String
-    var date :NSDate
-    var anonymous :Bool
-    var mine :Bool
+    var user = User()
+    var message = ""
+    var date = NSDate()
+    var anonymous = false
+    var mine = false
 }

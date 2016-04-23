@@ -106,10 +106,19 @@ class EventListTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - XXXXX
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = ChatListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
     // MARK: - Table view delegate
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return EventTableViewCell.cellHeight()
     }
+
+
     
 }

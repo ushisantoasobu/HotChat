@@ -53,5 +53,28 @@ class APIManager {
     func getEvent(eventId :Int) -> Event? {
         return nil
     }
-    
+
+    func getChats(eventId :Int) -> [Chat] {
+
+        var user1 = User()
+        user1.name = "ushisantoasobu"
+
+        var chat1 = Chat()
+        chat1.user = user1
+        chat1.message = "楽しみですね、よろしくお願いします！！"
+        chat1.mine = true
+
+        var user2 = User()
+        user2.name = "高畑充希"
+
+        var chat2 = Chat()
+        chat2.user = user2
+        chat2.message = "全然人入ってない > < 見やすいけど寂しい"
+        chat2.mine = false
+
+        return [
+            chat1,
+            chat2
+        ]
+    }
 }

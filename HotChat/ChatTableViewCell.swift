@@ -10,6 +10,10 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImageView: UIImageView?
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var bodyLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +26,8 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     func setChat(chat :Chat) {
-        //
+        self.nameLabel?.text = chat.user.name
+        self.bodyLabel.text = chat.message
     }
     
 }

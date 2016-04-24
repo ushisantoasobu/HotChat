@@ -18,9 +18,14 @@ struct AppReducer: Reducer {
             //            repositories: repositoriesReducer(state?.repositories, action: action),
             //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
 
-            eventCreateState: eventCreateReducer(state?.eventCreateState, action: action)
+            eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
+            accountEditState: accountEditReducer(state?.accountEditState, action: action),
+            eventListState: eventListReducer(state?.eventListState, action: action),
+            chatListState: chatListReducer(state?.chatListState, action: action)
         )
     }
+
+    // MARK: - EventCreate
 
     func eventCreateReducer(state: EventCreateState?, action: Action) -> EventCreateState {
 //        var state = state ?? initialAuthenticationState()
@@ -39,6 +44,30 @@ struct AppReducer: Reducer {
             break
         }
 
+        return state
+    }
+
+    // MARK: - AccountEdit
+
+    func accountEditReducer(state: AccountEditState?, action: Action) -> AccountEditState {
+        var state = state ?? AccountEditState()
+        //
+        return state
+    }
+
+    // MARK: - XXXXX
+
+    func eventListReducer(state: EventListState?, action: Action) -> EventListState {
+        var state = state ?? EventListState()
+        //
+        return state
+    }
+
+    // MARK: - XXXXX
+
+    func chatListReducer(state: ChatListState?, action: Action) -> ChatListState {
+        var state = state ?? ChatListState()
+        //
         return state
     }
 

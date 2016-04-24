@@ -56,6 +56,8 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     func newState(state: EventCreateState) {
         print("newState!!!!")
         print(store.state.eventCreateState.date)
+
+        self.tableView.reloadData()
     }
 
     // MARK: - private
@@ -92,12 +94,12 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         switch indexPath.section {
         case 0:
             let vc = DateSettingViewController()
-            vc.initialDate = self.date
+            vc.initialDate = store.state.eventCreateState.date
             vc.dateSetDone = {(date :NSDate) in
                 // TODO: weakself
                 self.navigationController?.popViewControllerAnimated(true)
-                self.date = date
-                self.tableView.reloadData()
+//                self.date = date
+//                self.tableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
             break
@@ -156,8 +158,8 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = UITableViewCell()
         switch indexPath.section {
         case 0:
-            if (self.date != nil) {
-                cell.textLabel?.text = self.date?.convertToString()
+            if (store.state.eventCreateState.date != nil) {
+                cell.textLabel?.text = store.state.eventCreateState.date!.convertToString()
                 cell.textLabel?.textColor = UIColor.darkGrayColor()
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             } else {

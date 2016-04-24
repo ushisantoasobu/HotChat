@@ -17,6 +17,6 @@ struct AppState: StateType {
 }
 
 struct EventCreateState: StateType {
-    var name = ""
-    var date = NSDate()
+    var name :String?
+    var date :NSDate?
 }

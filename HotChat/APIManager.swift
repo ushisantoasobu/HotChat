@@ -19,6 +19,13 @@ class APIManager {
         return Static.instance
     }
 
+    // MARK: - temp data
+
+    var locationEvents = [
+        Event(name: "Sun kil moon 単独公演", chatCount: 3),
+        Event(name: "Spiritualized - AcousticMainlines", chatCount: 8)
+    ]
+
     // MARK: - public
 
     func getUser(userId :Int) -> User? {
@@ -33,16 +40,7 @@ class APIManager {
         let delay = 1.2 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
-
-            var event1 = Event()
-            event1.name = "Sun kil moon 単独公演"
-            event1.chatCount = 3
-
-            var event2 = Event()
-            event2.name = "Spiritualized - AcousticMainlines"
-            event2.chatCount = 8
-            
-            handler([event1, event2])
+            handler(self.locationEvents)
         })
     }
     
@@ -63,7 +61,12 @@ class APIManager {
     }
 
     func postEvent(event :Event, handler :(() -> Void)){
-        //
+        let delay = 0.4 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.locationEvents.append(event)
+            handler()
+        })
     }
 
     func getChats(eventId :Int, handler :([Chat] -> Void)){

@@ -10,9 +10,7 @@ import Foundation
 
 class AccountManager {
 
-    var identifier = 1
-    var name = "ushisantoasobu"
-    // TODO: User() のほうが正しい？？
+    var user = User()
 
     // MARK: - singleton
 
@@ -21,5 +19,9 @@ class AccountManager {
             static let instance : AccountManager = AccountManager()
         }
         return Static.instance
+    }
+
+    init() {
+        user.name = "ushisantoasobu"
     }
 }

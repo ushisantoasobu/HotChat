@@ -80,8 +80,12 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
 
-        store.dispatch(CreateEventResetAction())
-        self.navigationController?.popViewControllerAnimated(true)
+        let event = Event(name: store.state.eventCreateState.name!, chatCount: 0)
+        APIManager.sharedInstance.postEvent(event) {
+            // TODO: weakself
+            store.dispatch(CreateEventResetAction())
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
 
     // MARK: - UITableViewDelegate

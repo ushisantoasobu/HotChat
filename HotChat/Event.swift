@@ -20,4 +20,13 @@ struct Event {
     var creator :User = User()
     var chatCount :Int = 0
     var expire :NSDate = NSDate()
+
+    init() {
+        //
+    }
+
+    init(name :String, chatCount :Int) {
+        self.name = name
+        self.chatCount = chatCount
+    }
 }

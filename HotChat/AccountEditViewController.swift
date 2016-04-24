@@ -13,6 +13,8 @@ class AccountEditViewController: UIViewController {
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var facebookSwitch: UISwitch!
 
+    var tempName :String?
+
     init() {
         super.init(nibName: "AccountEditViewController", bundle: nil)
     }
@@ -26,6 +28,8 @@ class AccountEditViewController: UIViewController {
 
         self.setupAppearance()
         self.setupHeader()
+
+        self.nameButton.setTitle(AccountManager.sharedInstance.user.name, forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +61,16 @@ class AccountEditViewController: UIViewController {
     }
 
     func doneButtonTapped() {
+
+        // TODO: validation
+        if self.tempName == nil {
+            let alert = UIAlertController(title: nil, message: "アカウント名がおかしいです！", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return
+        }
+
+        AccountManager.sharedInstance.user.name = self.tempName!
         let alert = UIAlertController(title: nil, message: "アカウント設定を更新しました！", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
             // TODO: weakself
@@ -79,6 +93,7 @@ class AccountEditViewController: UIViewController {
         let vc = TextInputViewController()
         vc.textSetDone = {(text :String) in
             // TODO: weakself
+            self.tempName = text
             self.navigationController?.popViewControllerAnimated(true)
             self.nameButton.setTitle(text, forState: .Normal)
         }

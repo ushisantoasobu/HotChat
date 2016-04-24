@@ -33,6 +33,7 @@
 		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
 		CDA155A31CCC5D2400435212 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A21CCC5D2400435212 /* AppState.swift */; };
 		CDA155A61CCC5E4A00435212 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A51CCC5E4A00435212 /* AppActions.swift */; };
+		CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155AA1CCC605100435212 /* AppReducer.swift */; };
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
@@ -99,6 +100,7 @@
 		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CDA155A21CCC5D2400435212 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		CDA155A51CCC5E4A00435212 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
+		CDA155AA1CCC605100435212 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		CDA155A81CCC5FD900435212 /* reducers */ = {
 			isa = PBXGroup;
 			children = (
+				CDA155AA1CCC605100435212 /* AppReducer.swift */,
 			);
 			name = reducers;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
 				CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */,
 				CDE566531CCBCCF300226321 /* HotChatVC.swift in Sources */,
+				CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */,
 				CDE566511CCBCBFD00226321 /* UIColorExtension.swift in Sources */,

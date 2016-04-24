@@ -10,7 +10,13 @@ import Foundation
 import ReSwift
 
 struct AppState: StateType {
-    
+
+    var eventCreateState = EventCreateState()
 
     // future...we will add Router
+}
+
+struct EventCreateState: StateType {
+    var name = ""
+    var date = NSDate()
 }

@@ -56,6 +56,8 @@ class DateSettingViewController: UIViewController {
 
     func doneButtonTapped() {
         if self.dateSetDone != nil {
+            // MEMO: あれ、ここのActionのdispatchって、、、こういった汎用的な画面のときどうするのがいいんだろう
+            store.dispatch(CreateEventDateAction(date: self.datePicker.date))
             self.dateSetDone!(self.datePicker.date)
         }
     }

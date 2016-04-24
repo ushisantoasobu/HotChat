@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReSwift
 
-class EventCreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EventCreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -31,9 +32,30 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         self.setupTableView()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        store.subscribe(self) { (state :AppState) -> EventCreateState in
+            return state.eventCreateState
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        store.unsubscribe(self)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - ReSwift
+
+    func newState(state: EventCreateState) {
+        print("newState!!!!")
+        print(store.state.eventCreateState.date)
     }
 
     // MARK: - private

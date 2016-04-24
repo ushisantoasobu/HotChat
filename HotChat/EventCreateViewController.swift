@@ -54,9 +54,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - ReSwift
 
     func newState(state: EventCreateState) {
-        print("newState!!!!")
-        print(store.state.eventCreateState.date)
-
         self.tableView.reloadData()
     }
 
@@ -78,13 +75,14 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func doneButtonTapped() {
-        if self.date == nil || self.name == nil {
+        if store.state.eventCreateState.date == nil || store.state.eventCreateState.name == nil {
             let alert = UIAlertController(title: nil, message: "未入力の項目があります", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated:true, completion:nil)
             return
         }
 
+        store.dispatch(CreateEventResetAction())
         self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -98,8 +96,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             vc.dateSetDone = {(date :NSDate) in
                 // TODO: weakself
                 self.navigationController?.popViewControllerAnimated(true)
-//                self.date = date
-//                self.tableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
             break
@@ -108,8 +104,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             vc.textSetDone = {(text :String) in
                 // TODO: weakself
                 self.navigationController?.popViewControllerAnimated(true)
-                self.name = text
-                self.tableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
             break
@@ -169,8 +163,8 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             }
             break
         case 1:
-            if (self.name != nil) {
-                cell.textLabel?.text = self.name!
+            if (store.state.eventCreateState.name != nil) {
+                cell.textLabel?.text = store.state.eventCreateState.name!
                 cell.textLabel?.textColor = UIColor.darkGrayColor()
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             } else {

@@ -32,6 +32,9 @@ struct AppReducer: Reducer {
             break
         case let action as CreateEventDateAction:
             state.date = action.date
+        case _ as CreateEventResetAction:
+            state.name = nil
+            state.date = nil
         default:
             break
         }

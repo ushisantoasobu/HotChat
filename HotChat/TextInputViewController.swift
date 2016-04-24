@@ -52,6 +52,7 @@ class TextInputViewController: UIViewController {
 
     func doneButtonTapped() {
         if self.textSetDone != nil {
+            store.dispatch(CreateEventNameAction(name: self.textField.text!))
             self.textSetDone!(self.textField.text!)
         }
     }

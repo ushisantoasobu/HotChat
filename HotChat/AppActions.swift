@@ -18,3 +18,6 @@ struct CreateEventNameAction: Action {
 struct CreateEventDateAction: Action {
     let date :NSDate
 }
+
+struct CreateEventResetAction: Action {
+}

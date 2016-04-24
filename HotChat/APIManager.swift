@@ -21,6 +21,7 @@ class APIManager {
 
     // MARK: - temp data
 
+    // TODO: add paging...try reducer some patterns
     var locationEvents = [
         Event(name: "Sun kil moon 単独公演", chatCount: 3),
         Event(name: "Spiritualized - AcousticMainlines", chatCount: 8)

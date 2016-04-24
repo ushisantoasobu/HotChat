@@ -10,5 +10,7 @@ import Foundation
 import ReSwift
 
 struct AppState: StateType {
-    //
+    
+
+    // future...we will add Router
 }

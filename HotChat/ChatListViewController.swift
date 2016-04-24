@@ -25,6 +25,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupAppearance()
+        self.setupHeader()
         self.setupTableView()
 
         self.load()
@@ -36,6 +38,14 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     // MARK: - private
+
+    private func setupAppearance() {
+        self.tableView.backgroundColor = UIColor.mainThinColor()
+    }
+
+    private func setupHeader() {
+        self.navigationItem.title = "チャット一覧"
+    }
 
     private func setupTableView() {
         self.tableView.separatorStyle = .None

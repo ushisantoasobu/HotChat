@@ -16,7 +16,10 @@ class ChatTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        self.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UIColor.clearColor()
+        self.selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

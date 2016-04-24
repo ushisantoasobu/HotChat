@@ -33,6 +33,16 @@
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
+		CDE5663F1CCB148C00226321 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663E1CCB148C00226321 /* AccountManager.swift */; };
+		CDE566421CCB150F00226321 /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE566401CCB150F00226321 /* AccountEditViewController.swift */; };
+		CDE566431CCB150F00226321 /* AccountEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE566411CCB150F00226321 /* AccountEditViewController.xib */; };
+		CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE566441CCBAE0B00226321 /* TextInputViewController.swift */; };
+		CDE566471CCBAE0B00226321 /* TextInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE566451CCBAE0B00226321 /* TextInputViewController.xib */; };
+		CDE5664A1CCBAE2500226321 /* DateSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE566481CCBAE2500226321 /* DateSettingViewController.swift */; };
+		CDE5664B1CCBAE2500226321 /* DateSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE566491CCBAE2500226321 /* DateSettingViewController.xib */; };
+		CDE5664D1CCBB49000226321 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5664C1CCBB49000226321 /* NSDateExtension.swift */; };
+		CDE566511CCBCBFD00226321 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE566501CCBCBFD00226321 /* UIColorExtension.swift */; };
+		CDE566531CCBCCF300226321 /* HotChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE566521CCBCCF300226321 /* HotChatVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +95,16 @@
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		CDE5663E1CCB148C00226321 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		CDE566401CCB150F00226321 /* AccountEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEditViewController.swift; sourceTree = "<group>"; };
+		CDE566411CCB150F00226321 /* AccountEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountEditViewController.xib; sourceTree = "<group>"; };
+		CDE566441CCBAE0B00226321 /* TextInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
+		CDE566451CCBAE0B00226321 /* TextInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextInputViewController.xib; sourceTree = "<group>"; };
+		CDE566481CCBAE2500226321 /* DateSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSettingViewController.swift; sourceTree = "<group>"; };
+		CDE566491CCBAE2500226321 /* DateSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSettingViewController.xib; sourceTree = "<group>"; };
+		CDE5664C1CCBB49000226321 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		CDE566501CCBCBFD00226321 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		CDE566521CCBCCF300226321 /* HotChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotChatVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +164,7 @@
 				BB6CBA4C1CC7218900193825 /* Main.storyboard */,
 				BB6CBA951CC73ED700193825 /* managers */,
 				BB6CBA781CC7232700193825 /* models */,
+				CDE5664E1CCBCB1400226321 /* protocols */,
 				BB6CBA4A1CC7218900193825 /* ViewController.swift */,
 				BB6CBA791CC7232F00193825 /* viewcontrollers */,
 				BB6CBA8C1CC7244C00193825 /* views */,
@@ -183,14 +204,20 @@
 		BB6CBA791CC7232F00193825 /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				CDE566401CCB150F00226321 /* AccountEditViewController.swift */,
+				CDE566411CCB150F00226321 /* AccountEditViewController.xib */,
 				BB6CBA841CC7240100193825 /* ChatListViewController.swift */,
 				BB6CBA851CC7240100193825 /* ChatListViewController.xib */,
+				CDE566481CCBAE2500226321 /* DateSettingViewController.swift */,
+				CDE566491CCBAE2500226321 /* DateSettingViewController.xib */,
 				CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */,
 				CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */,
 				BB6CBA801CC723E000193825 /* EventListTableViewController.swift */,
 				BB6CBA811CC723E000193825 /* EventListTableViewController.xib */,
 				BB6CBA881CC7243400193825 /* SearchStartViewController.swift */,
 				BB6CBA891CC7243400193825 /* SearchStartViewController.xib */,
+				CDE566441CCBAE0B00226321 /* TextInputViewController.swift */,
+				CDE566451CCBAE0B00226321 /* TextInputViewController.xib */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -210,6 +237,7 @@
 		BB6CBA951CC73ED700193825 /* managers */ = {
 			isa = PBXGroup;
 			children = (
+				CDE5663E1CCB148C00226321 /* AccountManager.swift */,
 				BB6CBA971CC73F0D00193825 /* APIManager.swift */,
 			);
 			name = managers;
@@ -226,8 +254,18 @@
 			isa = PBXGroup;
 			children = (
 				CDE5663C1CCB005B00226321 /* UIViewExtension.swift */,
+				CDE5664C1CCBB49000226321 /* NSDateExtension.swift */,
+				CDE566501CCBCBFD00226321 /* UIColorExtension.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		CDE5664E1CCBCB1400226321 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CDE566521CCBCCF300226321 /* HotChatVC.swift */,
+			);
+			name = protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,13 +375,16 @@
 				BB6CBA831CC723E000193825 /* EventListTableViewController.xib in Resources */,
 				BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */,
 				BB6CBA941CC7248700193825 /* ChatOtherTableViewCell.xib in Resources */,
+				CDE5664B1CCBAE2500226321 /* DateSettingViewController.xib in Resources */,
 				BB6CBA8B1CC7243400193825 /* SearchStartViewController.xib in Resources */,
 				BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */,
 				CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */,
 				BB6CBA501CC7218900193825 /* Assets.xcassets in Resources */,
 				BB6CBA871CC7240100193825 /* ChatListViewController.xib in Resources */,
+				CDE566471CCBAE0B00226321 /* TextInputViewController.xib in Resources */,
 				BB6CBA4E1CC7218900193825 /* Main.storyboard in Resources */,
 				BB6CBA901CC7247800193825 /* EventTableViewCell.xib in Resources */,
+				CDE566431CCB150F00226321 /* AccountEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,19 +410,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */,
+				CDE5664D1CCBB49000226321 /* NSDateExtension.swift in Sources */,
 				CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */,
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
+				CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */,
+				CDE566531CCBCCF300226321 /* HotChatVC.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */,
+				CDE566511CCBCBFD00226321 /* UIColorExtension.swift in Sources */,
+				CDE5663F1CCB148C00226321 /* AccountManager.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
 				BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */,
 				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,
 				BB6CBA861CC7240100193825 /* ChatListViewController.swift in Sources */,
 				BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */,
 				BB6CBA931CC7248700193825 /* ChatTableViewCell.swift in Sources */,
+				CDE566421CCB150F00226321 /* AccountEditViewController.swift in Sources */,
 				BB6CBA491CC7218900193825 /* AppDelegate.swift in Sources */,
 				BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */,
 				BB6CBA7F1CC7238000193825 /* Event.swift in Sources */,
+				CDE5664A1CCBAE2500226321 /* DateSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

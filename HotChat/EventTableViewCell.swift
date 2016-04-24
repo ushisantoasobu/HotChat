@@ -22,6 +22,8 @@ class EventTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.chatCountLabel.textColor = UIColor.mainColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -30,7 +32,7 @@ class EventTableViewCell: UITableViewCell {
     
     func setEvent(event :Event) {
         self.nameLabel.text = event.name
-        self.chatCountLabel.text = String(event.chatCount)
+        self.chatCountLabel.text = "comment " + String(event.chatCount)
     }
 
     class func cellHeight() -> CGFloat {

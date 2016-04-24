@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="イベント名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH9-d8-Awy">
-                        <rect key="frame" x="8" y="34" width="304" height="21"/>
+                        <rect key="frame" x="16" y="34" width="288" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="OUu-Ef-ai2"/>
                         </constraints>
@@ -24,35 +24,43 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-Vk-UcK">
-                        <rect key="frame" x="232" y="8" width="80" height="21"/>
+                        <rect key="frame" x="184" y="8" width="120" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0Av-Uc-szl"/>
-                            <constraint firstAttribute="width" constant="80" id="ENk-7o-M4i"/>
+                            <constraint firstAttribute="width" constant="120" id="ENk-7o-M4i"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
                         <color key="textColor" red="0.50196081400000003" green="0.7254902124" blue="0.27843138579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/12/24 23:45 作成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qks-OI-Ifm">
-                        <rect key="frame" x="8" y="8" width="160" height="21"/>
+                        <rect key="frame" x="16" y="8" width="160" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="sCz-J4-loW"/>
                             <constraint firstAttribute="width" constant="160" id="vZC-2c-dnB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qks-OI-Ifm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="95q-CY-pOM"/>
+                    <constraint firstItem="cH9-d8-Awy" firstAttribute="trailing" secondItem="ET9-Vk-UcK" secondAttribute="trailing" id="0Za-eZ-CcN"/>
+                    <constraint firstItem="qks-OI-Ifm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="95q-CY-pOM"/>
+                    <constraint firstItem="cH9-d8-Awy" firstAttribute="leading" secondItem="qks-OI-Ifm" secondAttribute="leading" id="AYi-KV-yiG"/>
                     <constraint firstItem="qks-OI-Ifm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="FIu-Dp-abo"/>
                     <constraint firstItem="ET9-Vk-UcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="I2E-Kb-vcX"/>
-                    <constraint firstAttribute="trailing" secondItem="ET9-Vk-UcK" secondAttribute="trailing" constant="8" id="Jan-6Q-tO0"/>
+                    <constraint firstAttribute="trailing" secondItem="ET9-Vk-UcK" secondAttribute="trailing" constant="16" id="Jan-6Q-tO0"/>
                     <constraint firstAttribute="bottom" secondItem="cH9-d8-Awy" secondAttribute="bottom" constant="8" id="Ube-Oy-uGi"/>
                     <constraint firstAttribute="trailing" secondItem="cH9-d8-Awy" secondAttribute="trailing" constant="8" id="lRy-hX-uZL"/>
                     <constraint firstItem="cH9-d8-Awy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rjO-w5-xbv"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="lRy-hX-uZL"/>
+                        <exclude reference="rjO-w5-xbv"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="chatCountLabel" destination="ET9-Vk-UcK" id="jx8-Oo-j2v"/>

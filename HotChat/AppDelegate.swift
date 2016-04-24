@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        self.setupAppearance()
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let vc = SearchStartViewController(nibName: "SearchStartViewController", bundle: nil)
@@ -48,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - private
 
+    private func setupAppearance() {
+//        UINavigationBar.appearance().backgroundColor = UIColor.mainColor()
+        UINavigationBar.appearance().tintColor = UIColor.mainColor()
+    }
 }
 

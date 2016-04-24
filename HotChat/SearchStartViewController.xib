@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchStartViewController" customModule="HotChat" customModuleProvider="target">
             <connections>
+                <outlet property="historyButton" destination="1A6-6R-Zys" id="5kO-Er-ahP"/>
+                <outlet property="locationButton" destination="06R-iG-46i" id="v1Z-BL-ytF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,15 +17,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempHomeImage" translatesAutoresizingMaskIntoConstraints="NO" id="Gca-SE-xjn">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39a-7E-w93">
-                    <rect key="frame" x="8" y="204" width="304" height="160"/>
+                    <rect key="frame" x="16" y="204" width="288" height="160"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06R-iG-46i">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="64"/>
-                            <color key="backgroundColor" red="0.18823529780000001" green="0.77647060160000003" blue="0.81960785390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06R-iG-46i">
+                            <rect key="frame" x="0.0" y="0.0" width="288" height="64"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="CdT-7q-snp"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="現在地からさがす">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -31,12 +37,13 @@
                                 <action selector="locationButtonTapped:" destination="-1" eventType="touchUpInside" id="nR5-z1-b26"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1A6-6R-Zys">
-                            <rect key="frame" x="0.0" y="96" width="304" height="64"/>
-                            <color key="backgroundColor" red="0.18823529780000001" green="0.77647060160000003" blue="0.81960785390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1A6-6R-Zys">
+                            <rect key="frame" x="0.0" y="96" width="288" height="64"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="Vbe-Kv-ETd"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="履歴からさがす">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -59,12 +66,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Gca-SE-xjn" secondAttribute="bottom" id="0aU-Hn-IpM"/>
                 <constraint firstItem="39a-7E-w93" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2Hh-Qe-Lyr"/>
+                <constraint firstAttribute="trailing" secondItem="Gca-SE-xjn" secondAttribute="trailing" id="4te-1y-PbS"/>
+                <constraint firstItem="Gca-SE-xjn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Amb-KC-Q8k"/>
                 <constraint firstItem="39a-7E-w93" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BwK-aR-eGz"/>
-                <constraint firstAttribute="trailing" secondItem="39a-7E-w93" secondAttribute="trailing" constant="8" id="DsA-1E-ZzV"/>
-                <constraint firstItem="39a-7E-w93" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="efV-NF-qWA"/>
+                <constraint firstAttribute="trailing" secondItem="39a-7E-w93" secondAttribute="trailing" constant="16" id="DsA-1E-ZzV"/>
+                <constraint firstItem="39a-7E-w93" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="efV-NF-qWA"/>
+                <constraint firstItem="Gca-SE-xjn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ghQ-bS-yDK"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="tempHomeImage" width="853" height="653"/>
+    </resources>
 </document>

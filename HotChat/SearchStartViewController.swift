@@ -10,10 +10,14 @@ import UIKit
 
 class SearchStartViewController: UIViewController {
 
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var historyButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupHeader()
+        self.setupAppearance()
+        self.setupHeader()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +26,11 @@ class SearchStartViewController: UIViewController {
     }
 
     // MARK: - private
+
+    private func setupAppearance() {
+        self.locationButton.backgroundColor = UIColor.mainColor()
+        self.historyButton.backgroundColor = UIColor.mainColor()
+    }
 
     private func setupHeader() {
         self.navigationItem.title = "イベントを探す"
@@ -36,13 +45,14 @@ class SearchStartViewController: UIViewController {
     }
 
     func userButtonTapped() {
-        print("user")
-
+        let vc = AccountEditViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 
     func createButtonTapped() {
-        print("create")
-
+        let vc = EventCreateViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 

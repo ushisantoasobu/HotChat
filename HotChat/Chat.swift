@@ -12,6 +12,7 @@ struct Chat {
     var user = User()
     var message = ""
     var date = NSDate()
+    var likeCount = 0
     var anonymous = false
     var mine = false
 }

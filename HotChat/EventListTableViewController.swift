@@ -43,13 +43,21 @@ class EventListTableViewController: UITableViewController {
     func load() {
         switch self.type {
         case .Location:
-            self.events = APIManager.sharedInstance.getEvents(Location())
+            APIManager.sharedInstance.getEvents(Location(), handler: { (events) in
+                // TODO: weakself
+                self.events = events
+                self.tableView.reloadData()
+            })
             break
         case .History:
-            self.events = APIManager.sharedInstance.getEvents(0)
+            APIManager.sharedInstance.getEvents(0, handler: { (events) in
+                // TODO: weakself
+                self.events = events
+                self.tableView.reloadData()
+            })
             break
         }
-        self.tableView.reloadData()
+
     }
 
     // MARK: - Table view data source

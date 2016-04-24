@@ -25,7 +25,7 @@ class APIManager {
         return nil
     }
     
-    func getEvents(location :Location) -> [Event] {
+    func getEvents(location :Location, handler : [Event] -> Void ) {
 
         var event1 = Event()
         event1.name = "Sun kil moon 単独公演"
@@ -35,26 +35,28 @@ class APIManager {
         event2.name = "Spiritualized - AcousticMainlines"
         event2.chatCount = 8
 
-        return [
-            event1, event2
-        ]
+        handler([event1, event2])
     }
     
-    func getEvents(userId :Int) -> [Event] {
+    func getEvents(userId :Int, handler :([Event] -> Void)) {
         var event1 = Event()
         event1.name = "ドリップコーヒー選手権 2016"
         event1.chatCount = 34
 
-        return [
-            event1
-        ]
+        handler([event1])
     }
     
     func getEvent(eventId :Int) -> Event? {
         return nil
     }
 
-    func getChats(eventId :Int) -> [Chat] {
+    func getChats(eventId :Int, handler :([Chat] -> Void)){
+
+//        let delay = 1.0 * Double(NSEC_PER_SEC)
+//        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        dispatch_after(time, dispatch_get_main_queue(), {
+//
+//        })
 
         var user1 = User()
         user1.name = "ushisantoasobu"
@@ -72,9 +74,6 @@ class APIManager {
         chat2.message = "全然人入ってない > < 見やすいけど寂しい"
         chat2.mine = false
 
-        return [
-            chat1,
-            chat2
-        ]
+        handler([chat1, chat2])
     }
 }

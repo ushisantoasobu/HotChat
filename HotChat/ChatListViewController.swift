@@ -54,8 +54,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     private func load() {
-        self.chats = APIManager.sharedInstance.getChats(0)
-        self.tableView.reloadData()
+        APIManager.sharedInstance.getChats(0, handler: { (chats) in
+            // TODO
+            self.chats = chats
+            self.tableView.reloadData()
+        })
     }
 
     // MARK: - UITableViewDelegate

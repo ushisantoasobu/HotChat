@@ -13,8 +13,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var tableView: UITableView!
 
-    var date :NSDate?
-    var name :String?
     let sections = ["日時", "イベント名", "場所"]
 
     init() {

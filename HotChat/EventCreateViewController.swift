@@ -153,23 +153,21 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             if (store.state.eventCreateState.date != nil) {
                 cell.textLabel?.text = store.state.eventCreateState.date!.convertToString()
                 cell.textLabel?.textColor = UIColor.darkGrayColor()
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             } else {
                 cell.textLabel?.text = "日時を設定します"
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             break
         case 1:
             if (store.state.eventCreateState.name != nil) {
                 cell.textLabel?.text = store.state.eventCreateState.name!
                 cell.textLabel?.textColor = UIColor.darkGrayColor()
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             } else {
                 cell.textLabel?.text = "イベント名を設定します"
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             break
         case 2:
             cell.textLabel?.text = " ※ 現在地が設定されます"

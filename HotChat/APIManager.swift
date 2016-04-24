@@ -24,6 +24,10 @@ class APIManager {
     func getUser(userId :Int) -> User? {
         return nil
     }
+
+    func putUser(user :User, handler : () -> Void ) -> Void {
+        //
+    }
     
     func getEvents(location :Location, handler : [Event] -> Void ) {
         let delay = 1.2 * Double(NSEC_PER_SEC)
@@ -58,6 +62,10 @@ class APIManager {
         return nil
     }
 
+    func postEvent(event :Event, handler :(() -> Void)){
+        //
+    }
+
     func getChats(eventId :Int, handler :([Chat] -> Void)){
 
         let delay = 1.0 * Double(NSEC_PER_SEC)
@@ -82,4 +90,13 @@ class APIManager {
             handler([chat1, chat2])
         })
     }
+
+    func postChat(chat :Chat, handler :(() -> Void)){
+        //
+    }
+
+    func deleteChat(chatId :Int, handler :(() -> Void)){
+        //
+    }
+
 }

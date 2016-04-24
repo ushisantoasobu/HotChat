@@ -11,6 +11,14 @@ import ReSwift
 
 // MEMO: 一旦すべてのActionをここに書いていくこととする（複数のファイルにはしない）
 
+// MARK: - Common
+
+struct CommonShowLoadingAction: Action { }
+struct CommonHideLoadingAction: Action { }
+struct CommonListEmptyAction: Action { }
+
+// MARK: - CreateEvent
+
 struct CreateEventNameAction: Action {
     let name :String
 }
@@ -21,3 +29,39 @@ struct CreateEventDateAction: Action {
 
 struct CreateEventResetAction: Action {
 }
+
+// MARK: - EventList
+
+// MEMO: 以下分ける必要あるのかわからない、まずはわけてつくってみる
+
+struct EventListLocationAddAction: Action {
+    let list :[Event]
+}
+
+struct EventListHistoryAddAction: Action {
+    let list :[Event]
+}
+
+// MARK: - ChatList
+
+struct ChatListAddChatsAction: Action {
+    let list :[Chat]
+}
+
+struct ChatListAddChatAction: Action {
+    let list :Chat
+}
+
+// MARK: - AccountEdit
+
+struct AccountEditNameAction: Action {
+    let name :String
+}
+
+// MARK: - DateSetting
+
+struct DateSettingSetAction: Action {
+    let date :NSData
+}
+
+

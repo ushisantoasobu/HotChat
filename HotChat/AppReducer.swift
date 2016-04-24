@@ -13,28 +13,30 @@ struct AppReducer: Reducer {
 
     func handleAction(action: Action, state: AppState?) -> AppState {
         return AppState(
-//            navigationState: NavigationReducer.handleAction(action, state: state?.navigationState),
-//            authenticationState: authenticationReducer(state?.authenticationState, action: action),
-//            repositories: repositoriesReducer(state?.repositories, action: action),
-//            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
+            //            navigationState: NavigationReducer.handleAction(action, state: state?.navigationState),
+            //            authenticationState: authenticationReducer(state?.authenticationState, action: action),
+            //            repositories: repositoriesReducer(state?.repositories, action: action),
+            //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
+
+            eventCreateState: eventCreateReducer(state?.eventCreateState, action: action)
         )
     }
 
-//    func authenticationReducer(state: AuthenticationState?, action: Action) -> AuthenticationState {
+    func eventCreateReducer(state: EventCreateState?, action: Action) -> EventCreateState {
 //        var state = state ?? initialAuthenticationState()
-//
-//        switch action {
-//        case _ as SwiftFlowInit:
-//            break
-//        case let action as SetOAuthURL:
-//            state.oAuthURL = action.oAuthUrl
-//        case let action as UpdateLoggedInState:
-//            state.loggedInState = action.loggedInState
-//        default:
-//            break
-//        }
-//        
-//        return state
-//    }
+        var state = state ?? EventCreateState() // TODO??
+
+        switch action {
+        case let action as CreateEventNameAction:
+            state.name = action.name
+            break
+        case let action as CreateEventDateAction:
+            state.date = action.date
+        default:
+            break
+        }
+
+        return state
+    }
 
 }

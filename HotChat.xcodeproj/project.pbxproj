@@ -183,7 +183,7 @@
 		BB6CBA471CC7218900193825 /* HotChat */ = {
 			isa = PBXGroup;
 			children = (
-				CDA155A41CCC5E3100435212 /* actions */,
+				CDA155A71CCC5FAE00435212 /* ReSwift */,
 				BB6CBA481CC7218900193825 /* AppDelegate.swift */,
 				BB6CBA4F1CC7218900193825 /* Assets.xcassets */,
 				CDE5663B1CCB003E00226321 /* extensions */,
@@ -194,7 +194,6 @@
 				BB6CBA951CC73ED700193825 /* managers */,
 				BB6CBA781CC7232700193825 /* models */,
 				CDE5664E1CCBCB1400226321 /* protocols */,
-				CDA155A11CCC5D1400435212 /* states */,
 				BB6CBA4A1CC7218900193825 /* ViewController.swift */,
 				BB6CBA791CC7232F00193825 /* viewcontrollers */,
 				BB6CBA8C1CC7244C00193825 /* views */,
@@ -294,6 +293,23 @@
 				CDA155A51CCC5E4A00435212 /* AppActions.swift */,
 			);
 			name = actions;
+			sourceTree = "<group>";
+		};
+		CDA155A71CCC5FAE00435212 /* ReSwift */ = {
+			isa = PBXGroup;
+			children = (
+				CDA155A41CCC5E3100435212 /* actions */,
+				CDA155A81CCC5FD900435212 /* reducers */,
+				CDA155A11CCC5D1400435212 /* states */,
+			);
+			name = ReSwift;
+			sourceTree = "<group>";
+		};
+		CDA155A81CCC5FD900435212 /* reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = reducers;
 			sourceTree = "<group>";
 		};
 		CDE5663B1CCB003E00226321 /* extensions */ = {

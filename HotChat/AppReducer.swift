@@ -51,7 +51,21 @@ struct AppReducer: Reducer {
 
     func accountEditReducer(state: AccountEditState?, action: Action) -> AccountEditState {
         var state = state ?? AccountEditState()
-        //
+
+        switch action {
+        case let action as AccountEditNameAction:
+            state.name = action.name
+            break
+        case let action as AccountEditOpenFbAction:
+            state.openFb = action.openFb
+            break
+        case _ as AccountEditResetAction:
+            state.name = nil
+            state.openFb = false
+        default:
+            break
+        }
+
         return state
     }
 

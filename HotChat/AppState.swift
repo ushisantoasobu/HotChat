@@ -26,6 +26,7 @@ struct EventCreateState: StateType {
 
 struct AccountEditState: StateType {
     var name :String?
+    var openFb = false
 }
 
 struct EventListState: StateType {

@@ -23,5 +23,6 @@ class AccountManager {
 
     init() {
         user.name = "ushisantoasobu"
+        user.openFb = false
     }
 }

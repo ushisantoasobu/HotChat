@@ -58,6 +58,13 @@ struct AccountEditNameAction: Action {
     let name :String
 }
 
+struct AccountEditOpenFbAction: Action {
+    let openFb :Bool
+}
+
+struct AccountEditResetAction: Action {
+}
+
 // MARK: - DateSetting
 
 struct DateSettingSetAction: Action {

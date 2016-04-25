@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import ReSwift
 
-class AccountEditViewController: UIViewController {
+class AccountEditViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var facebookSwitch: UISwitch!
-
-    var tempName :String?
 
     init() {
         super.init(nibName: "AccountEditViewController", bundle: nil)
@@ -29,12 +28,33 @@ class AccountEditViewController: UIViewController {
         self.setupAppearance()
         self.setupHeader()
 
-        self.nameButton.setTitle(AccountManager.sharedInstance.user.name, forState: .Normal)
+        self.setupInitialState()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        store.subscribe(self) { (state :AppState) -> AccountEditState in
+            return state.accountEditState
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        store.unsubscribe(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - ReSwift
+
+    func newState(state: AccountEditState) {
+        self.nameButton.setTitle(state.name, forState: .Normal)
+        self.facebookSwitch.setOn(state.openFb, animated: true) // MEMO: 初回だけfalseにしたいとか、どうする？？
     }
 
     // MARK: - private
@@ -56,21 +76,32 @@ class AccountEditViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [doneButton]
     }
 
+    private func setupInitialState() {
+        // MEMO: こう書いたらどうなっちゃうの？？コンパイルエラーでないけど・・
+//        store.state.accountEditState.name = AccountManager.sharedInstance.user.name
+//        store.state.accountEditState.openFb = AccountManager.sharedInstance.user.openFb
+
+        store.dispatch(AccountEditNameAction(name: AccountManager.sharedInstance.user.name))
+        store.dispatch(AccountEditOpenFbAction(openFb: AccountManager.sharedInstance.user.openFb))
+    }
+
     func closeButtonTapped() {
+        store.dispatch(AccountEditResetAction())
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     func doneButtonTapped() {
 
-        // TODO: validation
-        if self.tempName == nil {
+        if store.state.accountEditState.name == nil {
             let alert = UIAlertController(title: nil, message: "アカウント名がおかしいです！", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated:true, completion:nil)
             return
         }
 
-        AccountManager.sharedInstance.user.name = self.tempName!
+        AccountManager.sharedInstance.user.name = store.state.accountEditState.name!
+        AccountManager.sharedInstance.user.openFb = store.state.accountEditState.openFb
+
         let alert = UIAlertController(title: nil, message: "アカウント設定を更新しました！", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
             // TODO: weakself
@@ -93,13 +124,15 @@ class AccountEditViewController: UIViewController {
         let vc = TextInputViewController()
         vc.textSetDone = {(text :String) in
             // TODO: weakself
-            self.tempName = text
             self.navigationController?.popViewControllerAnimated(true)
-            self.nameButton.setTitle(text, forState: .Normal)
+            store.dispatch(AccountEditNameAction(name: text))
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    @IBAction func facebookSwitchChanged(sender: UISwitch) {
+        store.dispatch(AccountEditOpenFbAction(openFb: sender.on))
+    }
 
 
 }

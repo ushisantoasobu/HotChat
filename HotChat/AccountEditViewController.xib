@@ -37,7 +37,7 @@
                                 <constraint firstAttribute="height" constant="30" id="RQY-Lu-LJA"/>
                             </constraints>
                             <state key="normal" title="name">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="nameButtonTapped:" destination="-1" eventType="touchUpInside" id="Oe4-g7-6el"/>
@@ -78,6 +78,9 @@
                                 <constraint firstAttribute="width" constant="49" id="3Ip-B2-Rlp"/>
                                 <constraint firstAttribute="height" constant="31" id="YQj-nx-ekZ"/>
                             </constraints>
+                            <connections>
+                                <action selector="facebookSwitchChanged:" destination="-1" eventType="valueChanged" id="wGb-eD-23L"/>
+                            </connections>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

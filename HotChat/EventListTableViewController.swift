@@ -12,6 +12,9 @@ class EventListTableViewController: UITableViewController {
 
     var events = [Event]()
     var type :EventSearchType = .Location
+    var page = 0
+    var isLoading = false
+    var isRefreshing = false
 
     init() {
         super.init(nibName: "EventListTableViewController", bundle: nil)
@@ -30,6 +33,8 @@ class EventListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
+        self.setupTableView()
+
         self.load()
     }
 
@@ -40,7 +45,13 @@ class EventListTableViewController: UITableViewController {
 
     // MARK: - private
 
-    func load() {
+    private func setupTableView() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(EventListTableViewController.refresh), forControlEvents: .ValueChanged)
+        self.refreshControl = refresh
+    }
+
+    private func load() {
         switch self.type {
         case .Location:
             APIManager.sharedInstance.getEvents(Location(), handler: { (events) in
@@ -58,6 +69,14 @@ class EventListTableViewController: UITableViewController {
             break
         }
 
+    }
+
+    func refresh() {
+        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.refreshControl?.endRefreshing()
+        })
     }
 
     // MARK: - Table view data source

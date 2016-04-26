@@ -23,8 +23,20 @@ class APIManager {
 
     // TODO: add paging...try reducer some patterns
     var locationEvents = [
+        Event(name: "BLUE by MUSIC CIRCUS BEACH EDITION", chatCount: 343),
+        Event(name: "Spiritualized - AcousticMainlines", chatCount: 8),
+        Event(name: "カルチャークラブ 単独来日公演", chatCount: 1),
+        Event(name: "2PM ARENA TOUR 2016 GALAXY OF 2PM", chatCount: 854),
+        Event(name: "The Stone Roses 16/6/3 (金) 18:15 日本武道館", chatCount: 14),
+        Event(name: "DIZZY MIZZ LIZZY Japan Tour 2016", chatCount: 22),
+        Event(name: "NEW ORDER 来日公演", chatCount: 6),
+        Event(name: "MOGWAI JAPAN TOUR 2016", chatCount: 11),
+        Event(name: "AVICII JAPAN TOUR 2016", chatCount: 121),
+        Event(name: "スペシャル・ライヴ ヒストリー・オブ・テリー・ボジオ", chatCount: 12),
+        Event(name: "サラ・ブライトマン ガラ・コンサート", chatCount: 32),
+        Event(name: "アレクサンデル･ガジェヴ　ピアノ･リサイタル", chatCount: 8),
+        Event(name: "ユーリ・テミルカーノフ(指揮) サンクトペテルブルグ・フィルハーモニー交響楽団", chatCount: 9),
         Event(name: "Sun kil moon 単独公演", chatCount: 3),
-        Event(name: "Spiritualized - AcousticMainlines", chatCount: 8)
     ]
 
     // MARK: - public
@@ -37,15 +49,18 @@ class APIManager {
         //
     }
     
-    func getEvents(location :Location, handler : [Event] -> Void ) {
+    func getEvents(location :Location, page :Int, handler : ([Event], Bool) -> Void ) {
         let delay = 1.2 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
-            handler(self.locationEvents)
+            let startIndex = page * 10
+            let endIndex = (self.locationEvents.count < (startIndex + 10)) ?  self.locationEvents.count : (startIndex + 10)
+            let isLastPage = (page == 1)
+            handler(Array(self.locationEvents[startIndex..<endIndex]), isLastPage)
         })
     }
     
-    func getEvents(userId :Int, handler :([Event] -> Void)) {
+    func getEvents(userId :Int, page :Int, handler :([Event] -> Void)) {
         let delay = 0.4 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {

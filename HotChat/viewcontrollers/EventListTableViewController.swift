@@ -15,6 +15,7 @@ class EventListTableViewController: UITableViewController {
     var page = 0
     var isLoading = false
     var isRefreshing = false
+    var isLastPage = false
 
     init() {
         super.init(nibName: "EventListTableViewController", bundle: nil)
@@ -54,16 +55,32 @@ class EventListTableViewController: UITableViewController {
     private func load() {
         switch self.type {
         case .Location:
-            APIManager.sharedInstance.getEvents(Location(), handler: { (events) in
+            self.isLoading = true
+            APIManager.sharedInstance.getEvents(Location(), page: self.page, handler: { (events, isLastPage) in
                 // TODO: weakself
-                self.events = events
+                self.refreshControl?.endRefreshing()
+                self.isLoading = false
+                if self.page == 0 {
+                    self.events = []
+                }
+                self.events.appendContentsOf(events)
+                self.page = self.page.successor()
+                self.isLastPage = isLastPage
                 self.tableView.reloadData()
             })
             break
         case .History:
-            APIManager.sharedInstance.getEvents(0, handler: { (events) in
+            self.isLoading = true
+            APIManager.sharedInstance.getEvents(0, page: self.page, handler: { (events) in
                 // TODO: weakself
-                self.events = events
+                self.refreshControl?.endRefreshing()
+                self.isLoading = false
+                if self.page == 0 {
+                    self.events = []
+                }
+                self.events.appendContentsOf(events)
+                self.page = self.page.successor()
+                self.isLastPage = true
                 self.tableView.reloadData()
             })
             break
@@ -72,11 +89,8 @@ class EventListTableViewController: UITableViewController {
     }
 
     func refresh() {
-        let delay = 0.5 * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            self.refreshControl?.endRefreshing()
-        })
+        self.page = 0
+        self.load()
     }
 
     // MARK: - Table view data source
@@ -86,12 +100,26 @@ class EventListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.events.count
+        if self.events.count == 0 {
+            return 0
+        }
+
+        if self.isLastPage {
+            return self.events.count
+        } else {
+            return self.events.count + 1
+        }
+
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
 //        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        if indexPath.row == self.events.count {
+            let cell = InfiniteLoadingCell.instantiate()
+            return cell
+        }
 
         let cell = EventTableViewCell.instantiate()
         cell.setEvent(self.events[indexPath.row])
@@ -146,6 +174,12 @@ class EventListTableViewController: UITableViewController {
         return EventTableViewCell.cellHeight()
     }
 
-
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if cell is InfiniteLoadingCell {
+            if !self.isLoading {
+                self.load()
+            }
+        }
+    }
     
 }

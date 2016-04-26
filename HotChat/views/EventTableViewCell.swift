@@ -36,6 +36,6 @@ class EventTableViewCell: UITableViewCell {
     }
 
     class func cellHeight() -> CGFloat {
-        return 64.0
+        return 88.0
     }
 }

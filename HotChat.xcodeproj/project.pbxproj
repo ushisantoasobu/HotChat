@@ -36,6 +36,7 @@
 		CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155AA1CCC605100435212 /* AppReducer.swift */; };
 		CDA155B51CCFC2E100435212 /* InfiniteLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */; };
 		CDA155B61CCFC2E100435212 /* InfiniteLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */; };
+		CDA155B81CCFCD8800435212 /* VCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155B71CCFCD8800435212 /* VCHelper.swift */; };
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
@@ -105,6 +106,7 @@
 		CDA155AA1CCC605100435212 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteLoadingCell.swift; sourceTree = "<group>"; };
 		CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfiniteLoadingCell.xib; sourceTree = "<group>"; };
+		CDA155B71CCFCD8800435212 /* VCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCHelper.swift; path = HotChat/views/VCHelper.swift; sourceTree = SOURCE_ROOT; };
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		BB6CBA961CC73EEC00193825 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CDA155B71CCFCD8800435212 /* VCHelper.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 			files = (
 				BB6CBA8F1CC7247800193825 /* EventTableViewCell.swift in Sources */,
 				CDE5664D1CCBB49000226321 /* NSDateExtension.swift in Sources */,
+				CDA155B81CCFCD8800435212 /* VCHelper.swift in Sources */,
 				CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */,
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
 				CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */,

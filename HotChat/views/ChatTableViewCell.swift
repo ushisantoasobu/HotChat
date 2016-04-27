@@ -31,6 +31,14 @@ class ChatTableViewCell: UITableViewCell {
     func setChat(chat :Chat) {
         self.nameLabel?.text = chat.user.name
         self.bodyLabel.text = chat.message
+        
+        if chat.mine {
+            self.bodyLabel.textColor = UIColor.whiteColor()
+            self.bodyLabel.backgroundColor = UIColor.mainColor()
+        } else {
+            self.bodyLabel.textColor = UIColor.whiteColor()
+            self.bodyLabel.backgroundColor = UIColor.lightGrayColor()
+        }
     }
     
 }

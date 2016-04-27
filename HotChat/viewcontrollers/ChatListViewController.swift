@@ -11,6 +11,9 @@ import UIKit
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var chatInputView: UIView!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var chatInputViewBottomConstraint: NSLayoutConstraint!
 
     var chats = [Chat]()
 
@@ -40,7 +43,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - private
 
     private func setupAppearance() {
-        self.tableView.backgroundColor = UIColor.mainThinColor()
+        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.chatInputView.backgroundColor = UIColor.mainColor()
     }
 
     private func setupHeader() {

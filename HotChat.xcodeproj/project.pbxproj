@@ -37,6 +37,7 @@
 		CDA155B51CCFC2E100435212 /* InfiniteLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */; };
 		CDA155B61CCFC2E100435212 /* InfiniteLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */; };
 		CDA155B81CCFCD8800435212 /* VCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155B71CCFCD8800435212 /* VCHelper.swift */; };
+		CDA155BC1CD10FC700435212 /* ChatLikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155BB1CD10FC700435212 /* ChatLikeButton.swift */; };
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
@@ -107,6 +108,7 @@
 		CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteLoadingCell.swift; sourceTree = "<group>"; };
 		CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfiniteLoadingCell.xib; sourceTree = "<group>"; };
 		CDA155B71CCFCD8800435212 /* VCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCHelper.swift; path = HotChat/views/VCHelper.swift; sourceTree = SOURCE_ROOT; };
+		CDA155BB1CD10FC700435212 /* ChatLikeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLikeButton.swift; sourceTree = "<group>"; };
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -262,13 +264,8 @@
 		BB6CBA8C1CC7244C00193825 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */,
-				BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */,
-				BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */,
-				BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */,
-				BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */,
-				CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */,
-				CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */,
+				CDA155BA1CD10F8B00435212 /* buttons */,
+				CDA155B91CD10F7900435212 /* cells */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -322,6 +319,28 @@
 				CDA155AA1CCC605100435212 /* AppReducer.swift */,
 			);
 			path = reducers;
+			sourceTree = "<group>";
+		};
+		CDA155B91CD10F7900435212 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */,
+				BB6CBA921CC7248700193825 /* ChatOtherTableViewCell.xib */,
+				BB6CBA911CC7248700193825 /* ChatTableViewCell.swift */,
+				BB6CBA8D1CC7247800193825 /* EventTableViewCell.swift */,
+				BB6CBA8E1CC7247800193825 /* EventTableViewCell.xib */,
+				CDA155B31CCFC2E100435212 /* InfiniteLoadingCell.swift */,
+				CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		CDA155BA1CD10F8B00435212 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CDA155BB1CD10FC700435212 /* ChatLikeButton.swift */,
+			);
+			name = buttons;
 			sourceTree = "<group>";
 		};
 		CDE5663B1CCB003E00226321 /* extensions */ = {
@@ -547,6 +566,7 @@
 				CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */,
 				CDE566511CCBCBFD00226321 /* UIColorExtension.swift in Sources */,
 				CDE5663F1CCB148C00226321 /* AccountManager.swift in Sources */,
+				CDA155BC1CD10FC700435212 /* ChatLikeButton.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
 				BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */,
 				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,

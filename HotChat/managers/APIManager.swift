@@ -39,6 +39,10 @@ class APIManager {
         Event(name: "Sun kil moon 単独公演", chatCount: 3),
     ]
 
+    var chats = [
+
+    ]
+
     // MARK: - public
 
     func getUser(userId :Int) -> User? {

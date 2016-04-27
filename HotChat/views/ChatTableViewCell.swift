@@ -13,12 +13,14 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView?
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var bodyContainerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = UIColor.clearColor()
+        self.bodyContainerView.layer.cornerRadius = 8.0
         self.selectionStyle = .None
     }
 
@@ -34,11 +36,18 @@ class ChatTableViewCell: UITableViewCell {
         
         if chat.mine {
             self.bodyLabel.textColor = UIColor.whiteColor()
-            self.bodyLabel.backgroundColor = UIColor.mainColor()
+            self.bodyContainerView.backgroundColor = UIColor.mainColor()
         } else {
             self.bodyLabel.textColor = UIColor.whiteColor()
-            self.bodyLabel.backgroundColor = UIColor.lightGrayColor()
+            self.bodyContainerView.backgroundColor = UIColor.lightGrayColor()
         }
     }
+
+    // MARK: - IB actions
+
+    @IBAction func likeButtonTapped(button: ChatLikeButton) {
+        button.selected = !button.selected
+    }
+
     
 }

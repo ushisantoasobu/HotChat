@@ -10,9 +10,11 @@ import UIKit
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var fullSizeKeyboardHideButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatInputView: UIView!
-    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var chatInputTextField: UITextField!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint! // 不要？？
     @IBOutlet weak var chatInputViewBottomConstraint: NSLayoutConstraint!
 
     var chats = [Chat]()
@@ -28,11 +30,25 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.fullSizeKeyboardHideButton.hidden = true
+
         self.setupAppearance()
         self.setupHeader()
         self.setupTableView()
 
         self.load()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        print("viewWillAppear!!!!!!!!!!")
+        super.viewWillAppear(animated)
+        self.setupNotifications()
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        print("viewWillDisappear&&&&&&&&&&&")
+        super.viewWillDisappear(animated)
+        self.removeNotifications()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +73,72 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.dataSource = self
     }
 
+    private func setupNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification, object: nil, queue: nil) { (n :NSNotification!) -> Void in
+            self.keyboardWillShow(n)
+        }
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification, object: nil, queue: nil) { (n :NSNotification!) -> Void in
+            self.keyboardWillHide(n)
+        }
+    }
+
+    private func removeNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(UIKeyboardWillShowNotification)
+        NSNotificationCenter.defaultCenter().removeObserver(UIKeyboardWillHideNotification)
+    }
+
     private func load() {
         APIManager.sharedInstance.getChats(0, handler: { (chats) in
             // TODO
             self.chats = chats
             self.tableView.reloadData()
         })
+    }
+
+    // MARK: - IB actions
+
+
+    @IBAction func fullSizeKeyboardHideButtonTapped(sender: AnyObject) {
+        self.chatInputTextField.resignFirstResponder()
+    }
+
+    // MARK: - keyboard from NSNotification
+
+    func keyboardWillShow(notification:NSNotification) {
+        let info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = info[UIKeyboardAnimationCurveUserInfoKey] as! Int
+
+        keyboardFrame = self.view.convertRect(keyboardFrame, toView: nil)
+
+        self.chatInputViewBottomConstraint.constant = keyboardFrame.size.height
+
+        UIView.animateWithDuration(duration as Double,
+                                   delay: 0,
+                                   options: UIViewAnimationOptions(rawValue: UInt(curve) << 16),
+                                   animations: { () -> Void in
+                                    self.view.layoutIfNeeded()
+        }) { (flg) -> Void in
+            self.fullSizeKeyboardHideButton.hidden = false
+        }
+    }
+
+    func keyboardWillHide(notification:NSNotification) {
+        let info = notification.userInfo!
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = info[UIKeyboardAnimationCurveUserInfoKey] as! Int
+
+        self.chatInputViewBottomConstraint.constant = 0
+
+        UIView.animateWithDuration(duration as Double,
+                                   delay: 0,
+                                   options: UIViewAnimationOptions(rawValue: UInt(curve) << 16),
+                                   animations: { () -> Void in
+                                    self.view.layoutIfNeeded()
+        }) { (flg) -> Void in
+            self.fullSizeKeyboardHideButton.hidden = true
+        }
     }
 
     // MARK: - UITableViewDelegate

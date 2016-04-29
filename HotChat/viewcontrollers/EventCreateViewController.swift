@@ -80,7 +80,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
 
-        let event = Event(name: store.state.eventCreateState.name!, chatCount: 0)
+        let event = Event(identifier: 1, name: store.state.eventCreateState.name!, chatCount: 0)
         APIManager.sharedInstance.postEvent(event) {
             // TODO: weakself
             store.dispatch(CreateEventResetAction())

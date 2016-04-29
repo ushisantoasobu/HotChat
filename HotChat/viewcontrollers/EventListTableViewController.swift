@@ -170,6 +170,7 @@ class EventListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = ChatListViewController()
+        vc.event = self.events[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

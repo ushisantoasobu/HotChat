@@ -23,6 +23,7 @@ StoreSubscriber {
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyLabel: UILabel!
 
+    var event = Event()
     var chats = [Chat]()
 
     init() {
@@ -111,7 +112,7 @@ StoreSubscriber {
 
     private func load() {
         store.state.loadingState.hidden = false
-        APIManager.sharedInstance.getChats(0, handler: { (chats) in
+        APIManager.sharedInstance.getChats(self.event.identifier, handler: { (chats) in
 
             store.state.loadingState.hidden = true
             store.dispatch(TableAction(isEmpty: (chats.count == 0)))

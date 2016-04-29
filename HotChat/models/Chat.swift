@@ -15,4 +15,12 @@ struct Chat {
     var likeCount = 0
     var anonymous = false
     var mine = false
+
+    init(){ }
+
+    init(user :User, message :String, mine :Bool) {
+        self.user = user
+        self.message = message
+        self.mine = mine
+    }
 }

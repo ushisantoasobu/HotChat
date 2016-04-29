@@ -23,24 +23,25 @@ class APIManager {
 
     // TODO: add paging...try reducer some patterns
     var locationEvents = [
-        Event(name: "BLUE by MUSIC CIRCUS BEACH EDITION", chatCount: 343),
-        Event(name: "Spiritualized - AcousticMainlines", chatCount: 8),
-        Event(name: "カルチャークラブ 単独来日公演", chatCount: 1),
-        Event(name: "2PM ARENA TOUR 2016 GALAXY OF 2PM", chatCount: 854),
-        Event(name: "The Stone Roses 16/6/3 (金) 18:15 日本武道館", chatCount: 14),
-        Event(name: "DIZZY MIZZ LIZZY Japan Tour 2016", chatCount: 22),
-        Event(name: "NEW ORDER 来日公演", chatCount: 6),
-        Event(name: "MOGWAI JAPAN TOUR 2016", chatCount: 11),
-        Event(name: "AVICII JAPAN TOUR 2016", chatCount: 121),
-        Event(name: "スペシャル・ライヴ ヒストリー・オブ・テリー・ボジオ", chatCount: 12),
-        Event(name: "サラ・ブライトマン ガラ・コンサート", chatCount: 32),
-        Event(name: "アレクサンデル･ガジェヴ　ピアノ･リサイタル", chatCount: 8),
-        Event(name: "ユーリ・テミルカーノフ(指揮) サンクトペテルブルグ・フィルハーモニー交響楽団", chatCount: 9),
-        Event(name: "Sun kil moon 単独公演", chatCount: 3),
+        Event(identifier: 0, name: "BLUE by MUSIC CIRCUS BEACH EDITION", chatCount: 343),
+        Event(identifier: 1, name: "Spiritualized - AcousticMainlines", chatCount: 8),
+        Event(identifier: 1, name: "カルチャークラブ 単独来日公演", chatCount: 1),
+        Event(identifier: 1, name: "2PM ARENA TOUR 2016 GALAXY OF 2PM", chatCount: 854),
+        Event(identifier: 1, name: "The Stone Roses 16/6/3 (金) 18:15 日本武道館", chatCount: 14),
+        Event(identifier: 1, name: "DIZZY MIZZ LIZZY Japan Tour 2016", chatCount: 22),
+        Event(identifier: 1, name: "NEW ORDER 来日公演", chatCount: 6),
+        Event(identifier: 1, name: "MOGWAI JAPAN TOUR 2016", chatCount: 11),
+        Event(identifier: 1, name: "AVICII JAPAN TOUR 2016", chatCount: 121),
+        Event(identifier: 1, name: "スペシャル・ライヴ ヒストリー・オブ・テリー・ボジオ", chatCount: 12),
+        Event(identifier: 1, name: "サラ・ブライトマン ガラ・コンサート", chatCount: 32),
+        Event(identifier: 1, name: "アレクサンデル･ガジェヴ　ピアノ･リサイタル", chatCount: 8),
+        Event(identifier: 1, name: "ユーリ・テミルカーノフ(指揮) サンクトペテルブルグ・フィルハーモニー交響楽団", chatCount: 9),
+        Event(identifier: 1, name: "Sun kil moon 単独公演", chatCount: 3),
     ]
 
     var chats = [
-
+        Chat(user: User(name: "ushisantoasobu"), message: "楽しみですね、よろしくお願いします！！", mine: true),
+        Chat(user: User(name: "高畑充希"), message: "全然人入ってない > < 見やすいけど寂しい", mine: false)
     ]
 
     // MARK: - public
@@ -96,28 +97,12 @@ class APIManager {
         dispatch_after(time, dispatch_get_main_queue(), {
 
             // temp
-            if (rand() % 100) < 40 {
+            if eventId == 0 {
                 handler([])
                 return
             }
-
-            var user1 = User()
-            user1.name = "ushisantoasobu"
-
-            var chat1 = Chat()
-            chat1.user = user1
-            chat1.message = "楽しみですね、よろしくお願いします！！"
-            chat1.mine = true
-
-            var user2 = User()
-            user2.name = "高畑充希"
-
-            var chat2 = Chat()
-            chat2.user = user2
-            chat2.message = "全然人入ってない > < 見やすいけど寂しい"
-            chat2.mine = false
             
-            handler([chat1, chat2])
+            handler(self.chats)
         })
     }
 

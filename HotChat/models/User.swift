@@ -13,4 +13,10 @@ struct User {
     var name :String = ""
     var imageUrl :String = ""
     var openFb :Bool = false
+
+    init() {}
+
+    init(name :String) {
+        self.name = name
+    }
 }

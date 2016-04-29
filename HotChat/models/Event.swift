@@ -14,6 +14,7 @@ enum EventSearchType {
 }
 
 struct Event {
+    var identifier :Int = 0
     var name :String = ""
     var date :NSDate = NSDate()
     var location :Location = Location()
@@ -25,7 +26,8 @@ struct Event {
         //
     }
 
-    init(name :String, chatCount :Int) {
+    init(identifier :Int, name :String, chatCount :Int) {
+        self.identifier = identifier
         self.name = name
         self.chatCount = chatCount
     }

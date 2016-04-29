@@ -15,6 +15,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         super.init(nibName: "EventListTableViewController", bundle: nil)
 
         store.dispatch(EventListChangeTypeAction(type: type))
+        store.dispatch(EventListResetEventsAction())
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +35,10 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
 
         self.load()
     }
+
+//    deinit {
+//        store.dispatch(EventListResetEventsAction())
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

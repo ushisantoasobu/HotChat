@@ -133,7 +133,29 @@ struct AppReducer: Reducer {
 
     func chatListReducer(state: ChatListState?, action: Action) -> ChatListState {
         var state = state ?? ChatListState()
-        //
+
+        switch action {
+        case let action as ChatListAddChatsAction:
+            state.chatList?.appendContentsOf(action.chats)
+            break
+        case let action as ChatListAddChatAction:
+            state.chatList?.append(action.chat)
+            break
+        case let action as ChatListSuccessorPageAction:
+            let num = action.isEmpty ? 0 : state.paging.num + 1
+            state.paging = Paging(num: num,
+                                  isLast: action.isLast,
+                                  isEmpty: action.isEmpty,
+                                  isRefreshing: false)
+            break
+        case _ as ChatListResetChatsAction:
+            state.chatList = []
+            state.paging = Paging()
+            break
+        default:
+            break
+        }
+
         return state
     }
 

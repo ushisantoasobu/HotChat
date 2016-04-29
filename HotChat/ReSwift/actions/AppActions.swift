@@ -24,12 +24,6 @@ struct LoadingAction: Action {
     let touchable :Bool
 }
 
-// MARK: - Table
-
-struct TableAction: Action {
-    let isEmpty :Bool
-}
-
 // MARK: - CreateEvent
 
 struct CreateEventNameAction: Action {
@@ -72,11 +66,18 @@ struct EventListSuccessorPageAction: Action {
 // MARK: - ChatList
 
 struct ChatListAddChatsAction: Action {
-    let list :[Chat]
+    let chats :[Chat]
 }
 
 struct ChatListAddChatAction: Action {
-    let list :Chat
+    let chat :Chat
+}
+
+struct ChatListResetChatsAction: Action { }
+
+struct ChatListSuccessorPageAction: Action {
+    let isLast :Bool
+    let isEmpty :Bool
 }
 
 // MARK: - AccountEdit

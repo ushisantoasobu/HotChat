@@ -38,7 +38,7 @@ StoreSubscriber {
         super.viewDidLoad()
 
         // TODO : あとで setupState() みたいな感じでまとめる？？
-        store.dispatch(TableAction(isEmpty: false))
+        store.dispatch(ChatListResetChatsAction())
         self.fullSizeKeyboardHideButton.hidden = true
 
         self.setupAppearance()
@@ -72,10 +72,14 @@ StoreSubscriber {
         // Dispose of any resources that can be recreated.
     }
 
+//    deinit {
+//        store.dispatch(ChatListResetChatsAction())
+//    }
+
     // MARK: - ReSwift
 
     func newState(state: AppState) {
-        // self.emptyView.hidden = !state.tableState.isEmpty
+        self.emptyView.hidden = !state.chatListState.paging.isLast
     }
 
     // MARK: - private
@@ -115,7 +119,7 @@ StoreSubscriber {
         APIManager.sharedInstance.getChats(self.event.identifier, handler: { (chats) in
 
             store.state.loadingState.hidden = true
-            store.dispatch(TableAction(isEmpty: (chats.count == 0)))
+            store.dispatch(ChatListSuccessorPageAction(isLast: true, isEmpty: (chats.count == 0)))
 
             if chats.count == 0 {
                 return

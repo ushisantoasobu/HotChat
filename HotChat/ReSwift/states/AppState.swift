@@ -53,4 +53,5 @@ struct EventListState: StateType {
 struct ChatListState: StateType {
     var chatList :[Chat]?
     var sendingChat :Chat?
+    var paging = Paging()
 }

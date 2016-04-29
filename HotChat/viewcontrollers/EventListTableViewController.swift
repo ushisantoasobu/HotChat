@@ -80,7 +80,8 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         self.tableView.tableFooterView = UIView(frame: CGRectZero) // 空のセルの線を消す
     }
 
-    private func load() {
+    // MEMO : この引数微妙かな・・・またはこれもstateでもてる？？ listをoptionalにしてそこで判定とか
+    private func load(type :LoadingType = .Normal) {
         if store.state.eventListState.type == nil {
             return
         }
@@ -88,7 +89,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         let page = store.state.eventListState.paging.num
         switch store.state.eventListState.type! {
         case .Location:
-            store.dispatch(LoadingShowAction(type: .Normal))
+            store.dispatch(LoadingShowAction(type: type))
             APIManager.sharedInstance.getEvents(Location(), page: page, handler: { (events, isLastPage) in
                 // TODO : weakself
                 self.refreshControl?.endRefreshing()
@@ -104,7 +105,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
             })
             break
         case .History:
-            store.dispatch(LoadingShowAction(type: .Normal))
+            store.dispatch(LoadingShowAction(type: type))
             APIManager.sharedInstance.getEvents(0, page: page, handler: { (events) in
                 // TODO: weakself
                 self.refreshControl?.endRefreshing()
@@ -125,7 +126,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
 
     func refresh() {
         store.dispatch(EventListResetEventsAction())
-        self.load()
+        self.load(.StatusBar)
     }
 
     // MARK: - Table view data source
@@ -214,7 +215,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell is InfiniteLoadingCell {
             if store.state.loadingState.isLoading != true {
-                self.load()
+                self.load(.StatusBar)
             }
         }
     }

@@ -129,14 +129,27 @@ StoreSubscriber {
         })
     }
 
+    private func validateSendMessage() -> Bool {
+        // temp...空白のみのvalidateとかも本来は入れる
+        return (self.chatInputTextField.text?.characters.count > 0)
+    }
+
     // MARK: - IB actions
 
     @IBAction func chatSendButtonTapped(sender: AnyObject) {
+
+        if !self.validateSendMessage() {
+            return
+        }
+
         store.dispatch(LoadingShowAction(type: .Masked))
         // MEMO : chatInputTextField.textもstateでもつ？？
         APIManager.sharedInstance.postChat(self.chatInputTextField.text!, handler: { (chat) in
             store.dispatch(LoadingHideAction())
             // TODO : weakself
+
+            // MEMO : chatInputTextField.textもstateでもつ？？
+            self.chatInputTextField.text = ""
             self.chatInputTextField.resignFirstResponder()
             store.dispatch(ChatListAddChatAction(chat: chat))
         })

@@ -3,7 +3,7 @@
 //  HotChat
 //
 //  Created by SatoShunsuke on 2016/04/29.
-//  Copyright © 2016年 moguraproject. All rights reserved.
+    //  Copyright © 2016年 moguraproject. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,7 @@ enum LoadingType {
     case Normal
 //    case NormalWhite
     case Masked
+    case StatusBar
 }
 
 class LoadingView: UIView {
@@ -36,6 +37,11 @@ class LoadingView: UIView {
         case .Masked:
             backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.45)
             indicatorColor = UIColor.mainColor()
+            touchable = false
+            break
+        case .StatusBar:
+            backgroundColor = UIColor.clearColor()
+            indicatorColor = UIColor.clearColor()
             touchable = false
             break
         }

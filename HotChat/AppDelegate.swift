@@ -110,9 +110,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
     // MARK: - ReSwift
 
     func newState(state: LoadingState) {
+
         self.loading?.setType(state.type)
         self.loading?.hidden = !state.isLoading
 //        self.loading?.touchable = state.toucheable
+
+        if state.type == .StatusBar {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = state.isLoading
+        }
     }
 
     // MARK: - private

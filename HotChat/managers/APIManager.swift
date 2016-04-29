@@ -106,8 +106,13 @@ class APIManager {
         })
     }
 
-    func postChat(chat :Chat, handler :(() -> Void)){
-        //
+    func postChat(chatMessage :String, handler :((Chat) -> Void)){
+        let delay = 1.0 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            let chat = Chat(user: User(name: "ushisantoasobu"), message: chatMessage, mine: true)
+            handler(chat)
+        })
     }
 
     func deleteChat(chatId :Int, handler :(() -> Void)){

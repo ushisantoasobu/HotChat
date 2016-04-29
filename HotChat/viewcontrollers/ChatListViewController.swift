@@ -115,10 +115,10 @@ StoreSubscriber {
     }
 
     private func load() {
-        store.state.loadingState.hidden = false
+        store.dispatch(LoadingAction(hidden: false, touchable: false))
         APIManager.sharedInstance.getChats(self.event.identifier, handler: { (chats) in
 
-            store.state.loadingState.hidden = true
+            store.dispatch(LoadingAction(hidden: true, touchable: false))
             store.dispatch(ChatListSuccessorPageAction(isLast: true, isEmpty: (chats.count == 0)))
 
             if chats.count == 0 {
@@ -133,6 +133,17 @@ StoreSubscriber {
 
     // MARK: - IB actions
 
+    @IBAction func chatSendButtonTapped(sender: AnyObject) {
+        store.dispatch(LoadingAction(hidden: false, touchable: false))
+        // MEMO : chatInputTextField.textもstateでもつ？？
+        APIManager.sharedInstance.postChat(self.chatInputTextField.text!, handler: { (chat) in
+            store.dispatch(LoadingAction(hidden: true, touchable: false))
+            // TODO : weakself
+            self.chatInputTextField.resignFirstResponder()
+            self.chats.append(chat)
+            self.tableView.reloadData()
+        })
+    }
 
     @IBAction func fullSizeKeyboardHideButtonTapped(sender: AnyObject) {
         self.chatInputTextField.resignFirstResponder()

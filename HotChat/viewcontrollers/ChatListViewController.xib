@@ -65,6 +65,9 @@
                             <state key="normal" title="送信">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="chatSendButtonTapped:" destination="-1" eventType="touchUpInside" id="WHQ-R8-YKr"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="メッセージを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W5p-8J-1zU">
                             <rect key="frame" x="16" y="9" width="242" height="30"/>

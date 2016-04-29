@@ -75,7 +75,7 @@ StoreSubscriber {
     // MARK: - ReSwift
 
     func newState(state: AppState) {
-        self.emptyView.hidden = !state.tableState.isEmpty
+        // self.emptyView.hidden = !state.tableState.isEmpty
     }
 
     // MARK: - private

@@ -9,17 +9,12 @@
 import UIKit
 import ReSwift
 
-class EventListTableViewController: UITableViewController {
+class EventListTableViewController: UITableViewController, StoreSubscriber {
 
-    var events = [Event]()
-    var type :EventSearchType = .Location
-    var page = 0
-//    var isLoading = false
-    var isRefreshing = false
-    var isLastPage = false
-
-    init() {
+    init(type :EventSearchType) {
         super.init(nibName: "EventListTableViewController", bundle: nil)
+
+        store.dispatch(EventListChangeTypeAction(type: type))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +40,31 @@ class EventListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        store.subscribe(self) { (state :AppState) -> AppState in
+            return state
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        store.unsubscribe(self)
+    }
+
+    // MARK: - ReSwift
+
+    func newState(state: AppState) {
+
+        // MEMO : 再描画不要のstate変更はどうすればいいのだろう？？？
+
+        print("new state !!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+        self.tableView.reloadData() // 何回もreloaddatea走ってるっぽい！！これはninjinkunの言ってたことだと思う > < 
+    }
+
     // MARK: - private
 
     private func setupTableView() {
@@ -56,37 +76,42 @@ class EventListTableViewController: UITableViewController {
     }
 
     private func load() {
-        switch self.type {
+        if store.state.eventListState.type == nil {
+            return
+        }
+
+        let page = store.state.eventListState.paging.num
+        switch store.state.eventListState.type! {
         case .Location:
-//            self.isLoading = true
             store.dispatch(LoadingAction(hidden: false, touchable: false))
-            APIManager.sharedInstance.getEvents(Location(), page: self.page, handler: { (events, isLastPage) in
-                // TODO: weakself
+            APIManager.sharedInstance.getEvents(Location(), page: page, handler: { (events, isLastPage) in
+                // TODO : weakself
                 self.refreshControl?.endRefreshing()
                 store.dispatch(LoadingAction(hidden: true, touchable: false))
-                if self.page == 0 {
-                    self.events = []
+
+                // MEMO : ここイケてない？？
+                if page == 0 {
+                    store.dispatch(EventListResetEventsAction())
                 }
-                self.events.appendContentsOf(events)
-                self.page = self.page.successor()
-                self.isLastPage = isLastPage
-                self.tableView.reloadData()
+
+                store.dispatch(EventListAddEventsAction(events: events))
+                store.dispatch(EventListSuccessorPageAction(isLast: isLastPage))
             })
             break
         case .History:
-//            self.isLoading = true
             store.dispatch(LoadingAction(hidden: false, touchable: false))
-            APIManager.sharedInstance.getEvents(0, page: self.page, handler: { (events) in
+            APIManager.sharedInstance.getEvents(0, page: page, handler: { (events) in
                 // TODO: weakself
                 self.refreshControl?.endRefreshing()
                 store.dispatch(LoadingAction(hidden: true, touchable: false))
-                if self.page == 0 {
-                    self.events = []
+
+                // MEMO : ここイケてない？？
+                if page == 0 {
+                    store.dispatch(EventListResetEventsAction())
                 }
-                self.events.appendContentsOf(events)
-                self.page = self.page.successor()
-                self.isLastPage = true
-                self.tableView.reloadData()
+
+                store.dispatch(EventListAddEventsAction(events: events))
+                store.dispatch(EventListSuccessorPageAction(isLast: true))
             })
             break
         }
@@ -94,7 +119,7 @@ class EventListTableViewController: UITableViewController {
     }
 
     func refresh() {
-        self.page = 0
+        store.dispatch(EventListResetEventsAction())
         self.load()
     }
 
@@ -105,14 +130,15 @@ class EventListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.events.count == 0 {
+        let events = store.state.eventListState.events ?? []
+        if events.count == 0 {
             return 0
         }
 
-        if self.isLastPage {
-            return self.events.count
+        if store.state.eventListState.paging.isLast {
+            return events.count
         } else {
-            return self.events.count + 1
+            return events.count + 1
         }
 
     }
@@ -121,13 +147,14 @@ class EventListTableViewController: UITableViewController {
 
 //        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        if indexPath.row == self.events.count {
+        let events = store.state.eventListState.events ?? []
+        if indexPath.row == events.count {
             let cell = InfiniteLoadingCell.instantiate()
             return cell
         }
 
         let cell = EventTableViewCell.instantiate()
-        cell.setEvent(self.events[indexPath.row])
+        cell.setEvent(events[indexPath.row])
         return cell
     }
 
@@ -170,7 +197,7 @@ class EventListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = ChatListViewController()
-        vc.event = self.events[indexPath.row]
+        vc.event = store.state.eventListState.events![indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

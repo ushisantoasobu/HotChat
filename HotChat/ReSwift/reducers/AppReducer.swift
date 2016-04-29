@@ -19,7 +19,7 @@ struct AppReducer: Reducer {
             //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
 
             loadingState: loadingReducer(state?.loadingState, action: action),
-            tableState:  tableReducer(state?.tableState, action: action),
+//            tableState:  tableReducer(state?.tableState, action: action),
             eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
             accountEditState: accountEditReducer(state?.accountEditState, action: action),
             eventListState: eventListReducer(state?.eventListState, action: action),
@@ -42,19 +42,19 @@ struct AppReducer: Reducer {
         return state
     }
 
-    func tableReducer(state: TableState?, action: Action) -> TableState {
-        var state = state ?? TableState()
-
-        switch action {
-        case let action as TableAction:
-            state.isEmpty = action.isEmpty
-            break
-        default:
-            break
-        }
-
-        return state
-    }
+//    func tableReducer(state: TableState?, action: Action) -> TableState {
+//        var state = state ?? TableState()
+//
+//        switch action {
+//        case let action as TableAction:
+//            state.isEmpty = action.isEmpty
+//            break
+//        default:
+//            break
+//        }
+//
+//        return state
+//    }
 
     // MARK: - EventCreate
 
@@ -100,11 +100,32 @@ struct AppReducer: Reducer {
         return state
     }
 
-    // MARK: - XXXXX
+    // MARK: - EventList
 
     func eventListReducer(state: EventListState?, action: Action) -> EventListState {
         var state = state ?? EventListState()
-        //
+
+        switch action {
+        case let action as EventListChangeTypeAction:
+            state.type = action.type
+            break
+        case let action as EventListAddEventsAction:
+            state.events?.appendContentsOf(action.events)
+            break
+        case let action as EventListSuccessorPageAction:
+            state.paging = Paging(num: state.paging.num + 1,
+                                  isLast: action.isLast,
+                                  isEmpty: false,
+                                  isRefreshing: false) // MEMO : 後半２つは仮
+            break
+        case _ as EventListResetEventsAction:
+            state.events = []
+            state.paging = Paging()
+            break
+        default:
+            break
+        }
+
         return state
     }
 

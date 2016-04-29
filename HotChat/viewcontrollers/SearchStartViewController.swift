@@ -59,14 +59,12 @@ class SearchStartViewController: UIViewController {
     // MARK: - IB actions
 
     @IBAction func locationButtonTapped(sender: AnyObject) {
-        let vc = EventListTableViewController()
-        vc.type = .Location
+        let vc = EventListTableViewController(type: .Location)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func historyButtonTapped(sender: AnyObject) {
-        let vc = EventListTableViewController()
-        vc.type = .History
+        let vc = EventListTableViewController(type: .History)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

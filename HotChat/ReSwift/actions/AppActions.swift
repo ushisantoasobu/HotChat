@@ -45,14 +45,28 @@ struct CreateEventResetAction: Action {
 
 // MARK: - EventList
 
-// MEMO: 以下分ける必要あるのかわからない、まずはわけてつくってみる
+// MEMO: 以下分ける必要あるのかわからない、まずはわけてつくってみる => やっぱ一旦やめる
 
-struct EventListLocationAddAction: Action {
-    let list :[Event]
+//struct EventListLocationAddAction: Action {
+//    let list :[Event]
+//}
+//
+//struct EventListHistoryAddAction: Action {
+//    let list :[Event]
+//}
+
+struct EventListChangeTypeAction: Action {
+    let type :EventSearchType
 }
 
-struct EventListHistoryAddAction: Action {
-    let list :[Event]
+struct EventListAddEventsAction: Action {
+    let events :[Event]
+}
+
+struct EventListResetEventsAction: Action { }
+
+struct EventListSuccessorPageAction: Action {
+    let isLast :Bool
 }
 
 // MARK: - ChatList

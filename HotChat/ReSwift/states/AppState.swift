@@ -12,7 +12,6 @@ import ReSwift
 struct AppState: StateType {
 
     var loadingState = LoadingState()
-    var tableState = TableState()
     var eventCreateState = EventCreateState()
     var accountEditState = AccountEditState()
     var eventListState = EventListState()
@@ -26,11 +25,14 @@ struct LoadingState {
     var toucheable = false
 }
 
-struct TableState {
-    var isEmpty = false
-}
-
 // ↑ 汎用的なStateをどんな感じでつくっていくべきか迷う
+
+struct Paging {
+    var num = 0
+    var isLast = false
+    var isEmpty = false
+    var isRefreshing = false // MEMO : 使える？？
+}
 
 struct EventCreateState: StateType {
     var name :String?
@@ -43,8 +45,9 @@ struct AccountEditState: StateType {
 }
 
 struct EventListState: StateType {
-    var locationList :[Event]?
-    var historyList :[Event]?
+    var events :[Event]?
+    var type :EventSearchType?
+    var paging = Paging()
 }
 
 struct ChatListState: StateType {

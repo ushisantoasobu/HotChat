@@ -72,6 +72,7 @@ StoreSubscriber {
         // Dispose of any resources that can be recreated.
     }
 
+    // MEMO : 初期化処理はviewdidloadに移したけど・・・どうするのがベスト？？
 //    deinit {
 //        store.dispatch(ChatListResetChatsAction())
 //    }

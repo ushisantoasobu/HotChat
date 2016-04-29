@@ -32,6 +32,9 @@ struct Paging {
     var isLast = false
     var isEmpty = false
     var isRefreshing = false // MEMO : 使える？？
+
+    // こんなのつけて富豪的reloadTableを解決できるかなとか思ったけど・・・そう簡単にいかないと感じた
+//    var needsReload = false
 }
 
 struct EventCreateState: StateType {

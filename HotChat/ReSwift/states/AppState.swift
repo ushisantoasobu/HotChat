@@ -12,6 +12,7 @@ import ReSwift
 struct AppState: StateType {
 
     var loadingState = LoadingState()
+    var tableState = TableState()
     var eventCreateState = EventCreateState()
     var accountEditState = AccountEditState()
     var eventListState = EventListState()
@@ -24,6 +25,12 @@ struct LoadingState {
     var hidden = true
     var toucheable = false
 }
+
+struct TableState {
+    var isEmpty = false
+}
+
+// ↑ 汎用的なStateをどんな感じでつくっていくべきか迷う
 
 struct EventCreateState: StateType {
     var name :String?

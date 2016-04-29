@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import ReSwift
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatListViewController: UIViewController,
+UITableViewDelegate, UITableViewDataSource,
+StoreSubscriber {
 
     @IBOutlet weak var fullSizeKeyboardHideButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -16,6 +19,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var chatInputTextField: UITextField!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint! // 不要？？
     @IBOutlet weak var chatInputViewBottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var emptyLabel: UILabel!
 
     var chats = [Chat]()
 
@@ -30,6 +36,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // TODO : あとで setupState() みたいな感じでまとめる？？
+        store.dispatch(TableAction(isEmpty: false))
         self.fullSizeKeyboardHideButton.hidden = true
 
         self.setupAppearance()
@@ -43,12 +51,19 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         print("viewWillAppear!!!!!!!!!!")
         super.viewWillAppear(animated)
         self.setupNotifications()
+
+        // MEMO : 複数のstateを購読したいときはどうするんだろう？？ 一旦AppStateをそのまま返してる
+        store.subscribe(self) { (state :AppState) -> AppState in
+            return state
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {
         print("viewWillDisappear&&&&&&&&&&&")
         super.viewWillDisappear(animated)
         self.removeNotifications()
+
+        store.unsubscribe(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,11 +71,18 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - ReSwift
+
+    func newState(state: AppState) {
+        self.emptyView.hidden = !state.tableState.isEmpty
+    }
+
     // MARK: - private
 
     private func setupAppearance() {
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.clearColor()
         self.chatInputView.backgroundColor = UIColor.mainColor()
+        self.emptyLabel.textColor = UIColor.mainColor()
     }
 
     private func setupHeader() {
@@ -90,8 +112,15 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     private func load() {
         store.state.loadingState.hidden = false
         APIManager.sharedInstance.getChats(0, handler: { (chats) in
+
             store.state.loadingState.hidden = true
-            // TODO
+            store.dispatch(TableAction(isEmpty: (chats.count == 0)))
+
+            if chats.count == 0 {
+                return
+            }
+
+            // TODO : weakself
             self.chats = chats
             self.tableView.reloadData()
         })

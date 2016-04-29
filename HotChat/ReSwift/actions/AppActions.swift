@@ -24,6 +24,12 @@ struct LoadingAction: Action {
     let touchable :Bool
 }
 
+// MARK: - Table
+
+struct TableAction: Action {
+    let isEmpty :Bool
+}
+
 // MARK: - CreateEvent
 
 struct CreateEventNameAction: Action {

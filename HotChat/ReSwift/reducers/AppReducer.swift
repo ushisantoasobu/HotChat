@@ -19,6 +19,7 @@ struct AppReducer: Reducer {
             //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
 
             loadingState: loadingReducer(state?.loadingState, action: action),
+            tableState:  tableReducer(state?.tableState, action: action),
             eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
             accountEditState: accountEditReducer(state?.accountEditState, action: action),
             eventListState: eventListReducer(state?.eventListState, action: action),
@@ -26,9 +27,7 @@ struct AppReducer: Reducer {
         )
     }
 
-    // MARK: - EventCreate
-
-    func loadingReducer(state: LoadingState?, action :Action) -> LoadingState {
+    func loadingReducer(state: LoadingState?, action: Action) -> LoadingState {
         var state = state ?? LoadingState()
 
         switch action {
@@ -42,6 +41,22 @@ struct AppReducer: Reducer {
 
         return state
     }
+
+    func tableReducer(state: TableState?, action: Action) -> TableState {
+        var state = state ?? TableState()
+
+        switch action {
+        case let action as TableAction:
+            state.isEmpty = action.isEmpty
+            break
+        default:
+            break
+        }
+
+        return state
+    }
+
+    // MARK: - EventCreate
 
     func eventCreateReducer(state: EventCreateState?, action: Action) -> EventCreateState {
 //        var state = state ?? initialAuthenticationState()

@@ -94,6 +94,13 @@ class APIManager {
         let delay = 1.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
+
+            // temp
+            if (rand() % 100) < 40 {
+                handler([])
+                return
+            }
+
             var user1 = User()
             user1.name = "ushisantoasobu"
 

@@ -10,6 +10,8 @@
                 <outlet property="chatInputTextField" destination="W5p-8J-1zU" id="w7i-6S-p6F"/>
                 <outlet property="chatInputView" destination="9mt-Ak-LY6" id="Rr1-ms-4LS"/>
                 <outlet property="chatInputViewBottomConstraint" destination="e2p-8w-cQd" id="09z-Tn-WQN"/>
+                <outlet property="emptyLabel" destination="BOO-yH-Vtd" id="mlX-8F-anu"/>
+                <outlet property="emptyView" destination="moW-r5-fs2" id="r0Q-LP-aKN"/>
                 <outlet property="fullSizeKeyboardHideButton" destination="lxK-sI-ZiM" id="0Mj-jO-oNJ"/>
                 <outlet property="tableView" destination="Ihh-84-9d8" id="FbW-Oo-BkJ"/>
                 <outlet property="tableViewBottomConstraint" destination="xBF-Jo-e7X" id="Dag-m7-4Kp"/>
@@ -25,6 +27,26 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moW-r5-fs2" userLabel="emptyView">
+                    <rect key="frame" x="0.0" y="120" width="320" height="280"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are Lonsome!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOO-yH-Vtd">
+                            <rect key="frame" x="16" y="118.5" width="288" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="kTt-8c-Fpn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="BOO-yH-Vtd" secondAttribute="trailing" constant="16" id="AZe-MK-qnW"/>
+                        <constraint firstItem="BOO-yH-Vtd" firstAttribute="leading" secondItem="moW-r5-fs2" secondAttribute="leading" constant="16" id="O8B-tp-wA7"/>
+                        <constraint firstItem="BOO-yH-Vtd" firstAttribute="centerY" secondItem="moW-r5-fs2" secondAttribute="centerY" id="yk6-ZM-te8"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxK-sI-ZiM">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <connections>
@@ -68,15 +90,19 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="lxK-sI-ZiM" secondAttribute="bottom" id="2Uz-4e-4s2"/>
+                <constraint firstItem="moW-r5-fs2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="5D7-6A-IVT"/>
                 <constraint firstAttribute="trailing" secondItem="Ihh-84-9d8" secondAttribute="trailing" id="8mE-Ak-BgH"/>
                 <constraint firstItem="Ihh-84-9d8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gms-bh-zvl"/>
                 <constraint firstItem="Ihh-84-9d8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ioy-ah-xnJ"/>
                 <constraint firstAttribute="trailing" secondItem="9mt-Ak-LY6" secondAttribute="trailing" id="SbC-Jm-QLX"/>
+                <constraint firstAttribute="trailing" secondItem="moW-r5-fs2" secondAttribute="trailing" id="Td1-Js-8Cd"/>
                 <constraint firstAttribute="trailing" secondItem="lxK-sI-ZiM" secondAttribute="trailing" id="VKB-oO-eIq"/>
+                <constraint firstItem="moW-r5-fs2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YLl-00-arj"/>
                 <constraint firstItem="lxK-sI-ZiM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aXS-Ou-iFf"/>
                 <constraint firstItem="9mt-Ak-LY6" firstAttribute="top" secondItem="Ihh-84-9d8" secondAttribute="bottom" id="dFB-xX-WqZ"/>
                 <constraint firstAttribute="bottom" secondItem="9mt-Ak-LY6" secondAttribute="bottom" id="e2p-8w-cQd"/>
                 <constraint firstItem="lxK-sI-ZiM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jxZ-av-TPg"/>
+                <constraint firstItem="9mt-Ak-LY6" firstAttribute="top" secondItem="moW-r5-fs2" secondAttribute="bottom" constant="120" id="m71-g5-lpX"/>
                 <constraint firstAttribute="bottom" secondItem="Ihh-84-9d8" secondAttribute="bottom" constant="48" id="xBF-Jo-e7X"/>
                 <constraint firstItem="9mt-Ak-LY6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y1H-eP-T85"/>
             </constraints>

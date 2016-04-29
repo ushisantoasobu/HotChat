@@ -51,7 +51,8 @@ struct EventListState: StateType {
 }
 
 struct ChatListState: StateType {
-    var chatList :[Chat]?
+    // MEMO : ここの event は EventListState の state と共有されてないと無意味だよね？？
+    var event :Event?
     var sendingChat :Chat?
     var paging = Paging()
 }

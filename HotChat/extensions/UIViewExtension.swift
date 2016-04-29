@@ -10,6 +10,7 @@ import UIKit
 
 extension UIView {
 
+    // TODO : ここ、ジェネリクスでいけるでしょ！試す
     class func getView(nibName :String) -> UIView {
         let nib = UINib(nibName: nibName, bundle: nil)
         var views = nib.instantiateWithOwner(self, options: nil)

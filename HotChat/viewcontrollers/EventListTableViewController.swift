@@ -201,8 +201,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
     // MARK: - XXXXX
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = ChatListViewController()
-        vc.event = store.state.eventListState.events![indexPath.row]
+        let vc = ChatListViewController(event: store.state.eventListState.events![indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

@@ -23,11 +23,9 @@ StoreSubscriber {
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyLabel: UILabel!
 
-    var event = Event()
-    var chats = [Chat]()
-
-    init() {
+    init(event :Event) {
         super.init(nibName: "ChatListViewController", bundle: nil)
+        store.dispatch(ChatListSetEventAction(event: event))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +37,7 @@ StoreSubscriber {
 
         // TODO : あとで setupState() みたいな感じでまとめる？？
         store.dispatch(ChatListResetChatsAction())
-        self.fullSizeKeyboardHideButton.hidden = true
+        self.fullSizeKeyboardHideButton.hidden = true // MEMO : キーボードの出入りで表示切り替えてるのだけど、キーボードまわりもうまくReSwiftで扱えない感が
 
         self.setupAppearance()
         self.setupHeader()
@@ -54,6 +52,7 @@ StoreSubscriber {
         self.setupNotifications()
 
         // MEMO : 複数のstateを購読したいときはどうするんだろう？？ 一旦AppStateをそのまま返してる
+        // MEMO : 特定のstateだけ、とか考えたけど難しそう・・・そもそも渡ってくるstate自体はオールのstateなので、その前の処理でやらないと？？
         store.subscribe(self) { (state :AppState) -> AppState in
             return state
         }
@@ -80,7 +79,9 @@ StoreSubscriber {
     // MARK: - ReSwift
 
     func newState(state: AppState) {
+        self.navigationItem.title = state.chatListState.event?.name
         self.emptyView.hidden = !state.chatListState.paging.isEmpty
+        self.tableView.reloadData()
     }
 
     // MARK: - private
@@ -92,7 +93,7 @@ StoreSubscriber {
     }
 
     private func setupHeader() {
-        self.navigationItem.title = "チャット一覧"
+//        self.navigationItem.title = "チャット一覧"
     }
 
     private func setupTableView() {
@@ -116,19 +117,15 @@ StoreSubscriber {
     }
 
     private func load() {
+        let event = store.state.chatListState.event
+        if event == nil {
+            return
+        }
         store.dispatch(LoadingShowAction(type: .Normal))
-        APIManager.sharedInstance.getChats(self.event.identifier, handler: { (chats) in
-
+        APIManager.sharedInstance.getChats(event!.identifier, handler: { (chats) in
             store.dispatch(LoadingHideAction())
             store.dispatch(ChatListSuccessorPageAction(isLast: true, isEmpty: (chats.count == 0)))
-
-            if chats.count == 0 {
-                return
-            }
-
-            // TODO : weakself
-            self.chats = chats
-            self.tableView.reloadData()
+            store.dispatch(ChatListAddChatsAction(chats: chats))
         })
     }
 
@@ -141,8 +138,7 @@ StoreSubscriber {
             store.dispatch(LoadingHideAction())
             // TODO : weakself
             self.chatInputTextField.resignFirstResponder()
-            self.chats.append(chat)
-            self.tableView.reloadData()
+            store.dispatch(ChatListAddChatAction(chat: chat))
         })
     }
 
@@ -222,12 +218,16 @@ StoreSubscriber {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chats.count
+        return (store.state.chatListState.event?.chats.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let event = store.state.chatListState.event
+        if event == nil {
+            return UITableViewCell()
+        }
         let cell :ChatTableViewCell
-        let chat = self.chats[indexPath.row]
+        let chat = event!.chats[indexPath.row]
         if chat.mine {
             cell = ChatTableViewCell.getView("ChatMeTableViewCell") as! ChatTableViewCell
         } else {

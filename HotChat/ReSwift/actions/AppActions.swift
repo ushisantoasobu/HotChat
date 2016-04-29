@@ -66,6 +66,10 @@ struct EventListSuccessorPageAction: Action {
 
 // MARK: - ChatList
 
+struct ChatListSetEventAction: Action {
+    let event :Event
+}
+
 struct ChatListAddChatsAction: Action {
     let chats :[Chat]
 }

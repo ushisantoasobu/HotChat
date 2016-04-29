@@ -33,7 +33,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
         self.window?.makeKeyAndVisible()
 
         if let loading = self.loading {
+            loading.translatesAutoresizingMaskIntoConstraints = false
             self.window?.addSubview(loading)
+
+            self.window?.addConstraint(NSLayoutConstraint(
+                item: self.window!,
+                attribute: .Top,
+                relatedBy: .Equal,
+                toItem: loading,
+                attribute: .Top,
+                multiplier: 1.0,
+                constant: 0.0))
+
+            self.window?.addConstraint(NSLayoutConstraint(
+                item: self.window!,
+                attribute: .Left,
+                relatedBy: .Equal,
+                toItem: loading,
+                attribute: .Left,
+                multiplier: 1.0,
+                constant: 0.0))
+
+            self.window?.addConstraint(NSLayoutConstraint(
+                item: self.window!,
+                attribute: .Bottom,
+                relatedBy: .Equal,
+                toItem: loading,
+                attribute: .Bottom,
+                multiplier: 1.0,
+                constant: 0.0))
+
+            self.window?.addConstraint(NSLayoutConstraint(
+                item: self.window!,
+                attribute: .Right,
+                relatedBy: .Equal,
+                toItem: loading,
+                attribute: .Right,
+                multiplier: 1.0,
+                constant: 0.0))
+
+            loading.layoutIfNeeded()
         }
 
         store.subscribe(self) { (state :AppState) -> LoadingState in

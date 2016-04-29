@@ -79,7 +79,7 @@ StoreSubscriber {
     // MARK: - ReSwift
 
     func newState(state: AppState) {
-        self.emptyView.hidden = !state.chatListState.paging.isLast
+        self.emptyView.hidden = !state.chatListState.paging.isEmpty
     }
 
     // MARK: - private

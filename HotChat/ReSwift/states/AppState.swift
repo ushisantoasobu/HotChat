@@ -11,12 +11,18 @@ import ReSwift
 
 struct AppState: StateType {
 
+    var loadingState = LoadingState()
     var eventCreateState = EventCreateState()
     var accountEditState = AccountEditState()
     var eventListState = EventListState()
     var chatListState = ChatListState()
 
     // future...we will add Router
+}
+
+struct LoadingState {
+    var hidden = true
+    var toucheable = false
 }
 
 struct EventCreateState: StateType {

@@ -15,20 +15,32 @@ var store = Store<AppState>(
 )
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
     var window: UIWindow?
-
+    var loading :LoadingView?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         self.setupAppearance()
+
+        self.loading = LoadingView.getView("LoadingView") as? LoadingView
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let vc = SearchStartViewController(nibName: "SearchStartViewController", bundle: nil)
         let nav = UINavigationController(rootViewController: vc)
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
+
+        if let loading = self.loading {
+            self.window?.addSubview(loading)
+        }
+
+        store.subscribe(self) { (state :AppState) -> LoadingState in
+            return state.loadingState
+        }
+
+        store.dispatch(LoadingAction(hidden: true, touchable: false))
 
         return true
     }
@@ -53,6 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    // MARK: - ReSwift
+
+    func newState(state: LoadingState) {
+        self.loading?.hidden = state.hidden
+//        self.loading?.touchable = state.toucheable
     }
 
     // MARK: - private

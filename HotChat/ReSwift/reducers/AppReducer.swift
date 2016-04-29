@@ -18,6 +18,7 @@ struct AppReducer: Reducer {
             //            repositories: repositoriesReducer(state?.repositories, action: action),
             //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
 
+            loadingState: loadingReducer(state?.loadingState, action: action),
             eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
             accountEditState: accountEditReducer(state?.accountEditState, action: action),
             eventListState: eventListReducer(state?.eventListState, action: action),
@@ -26,6 +27,21 @@ struct AppReducer: Reducer {
     }
 
     // MARK: - EventCreate
+
+    func loadingReducer(state: LoadingState?, action :Action) -> LoadingState {
+        var state = state ?? LoadingState()
+
+        switch action {
+        case let action as LoadingAction:
+            state.hidden = action.hidden
+            state.toucheable = action.touchable
+            break
+        default:
+            break
+        }
+
+        return state
+    }
 
     func eventCreateReducer(state: EventCreateState?, action: Action) -> EventCreateState {
 //        var state = state ?? initialAuthenticationState()

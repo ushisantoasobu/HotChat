@@ -17,6 +17,13 @@ struct CommonShowLoadingAction: Action { }
 struct CommonHideLoadingAction: Action { }
 struct CommonListEmptyAction: Action { }
 
+// MARK: - Loading
+
+struct LoadingAction: Action {
+    let hidden :Bool
+    let touchable :Bool
+}
+
 // MARK: - CreateEvent
 
 struct CreateEventNameAction: Action {

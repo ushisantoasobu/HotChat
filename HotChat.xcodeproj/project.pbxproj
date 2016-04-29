@@ -38,6 +38,8 @@
 		CDA155B61CCFC2E100435212 /* InfiniteLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */; };
 		CDA155B81CCFCD8800435212 /* VCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155B71CCFCD8800435212 /* VCHelper.swift */; };
 		CDA155BC1CD10FC700435212 /* ChatLikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155BB1CD10FC700435212 /* ChatLikeButton.swift */; };
+		CDA155BE1CD2DC4F00435212 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155BD1CD2DC4F00435212 /* LoadingView.swift */; };
+		CDA155C01CD2DC6300435212 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA155BF1CD2DC6300435212 /* LoadingView.xib */; };
 		CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */; };
 		CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */; };
 		CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5663C1CCB005B00226321 /* UIViewExtension.swift */; };
@@ -109,6 +111,8 @@
 		CDA155B41CCFC2E100435212 /* InfiniteLoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfiniteLoadingCell.xib; sourceTree = "<group>"; };
 		CDA155B71CCFCD8800435212 /* VCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCHelper.swift; path = HotChat/views/VCHelper.swift; sourceTree = SOURCE_ROOT; };
 		CDA155BB1CD10FC700435212 /* ChatLikeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLikeButton.swift; sourceTree = "<group>"; };
+		CDA155BD1CD2DC4F00435212 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CDA155BF1CD2DC6300435212 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		CDAD178A1CC7DAF900A539BE /* EventCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCreateViewController.swift; sourceTree = "<group>"; };
 		CDAD178B1CC7DAF900A539BE /* EventCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCreateViewController.xib; sourceTree = "<group>"; };
 		CDE5663C1CCB005B00226321 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 			children = (
 				CDA155BA1CD10F8B00435212 /* buttons */,
 				CDA155B91CD10F7900435212 /* cells */,
+				CDA155BD1CD2DC4F00435212 /* LoadingView.swift */,
+				CDA155BF1CD2DC6300435212 /* LoadingView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				BB6CBA531CC7218900193825 /* LaunchScreen.storyboard in Resources */,
 				CDAD178D1CC7DAF900A539BE /* EventCreateViewController.xib in Resources */,
 				BB6CBA501CC7218900193825 /* Assets.xcassets in Resources */,
+				CDA155C01CD2DC6300435212 /* LoadingView.xib in Resources */,
 				BB6CBA871CC7240100193825 /* ChatListViewController.xib in Resources */,
 				CDE566471CCBAE0B00226321 /* TextInputViewController.xib in Resources */,
 				BB6CBA4E1CC7218900193825 /* Main.storyboard in Resources */,
@@ -559,6 +566,7 @@
 				CDA155B81CCFCD8800435212 /* VCHelper.swift in Sources */,
 				CDAD178C1CC7DAF900A539BE /* EventCreateViewController.swift in Sources */,
 				BB6CBA821CC723E000193825 /* EventListTableViewController.swift in Sources */,
+				CDA155BE1CD2DC4F00435212 /* LoadingView.swift in Sources */,
 				CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */,
 				CDE566531CCBCCF300226321 /* HotChatVC.swift in Sources */,
 				CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */,

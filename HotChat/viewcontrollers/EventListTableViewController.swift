@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import ReSwift
 
 class EventListTableViewController: UITableViewController {
 
     var events = [Event]()
     var type :EventSearchType = .Location
     var page = 0
-    var isLoading = false
+//    var isLoading = false
     var isRefreshing = false
     var isLastPage = false
 
@@ -50,16 +51,19 @@ class EventListTableViewController: UITableViewController {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(EventListTableViewController.refresh), forControlEvents: .ValueChanged)
         self.refreshControl = refresh
+
+        self.tableView.tableFooterView = UIView(frame: CGRectZero) // 空のセルの線を消す
     }
 
     private func load() {
         switch self.type {
         case .Location:
-            self.isLoading = true
+//            self.isLoading = true
+            store.dispatch(LoadingAction(hidden: false, touchable: false))
             APIManager.sharedInstance.getEvents(Location(), page: self.page, handler: { (events, isLastPage) in
                 // TODO: weakself
                 self.refreshControl?.endRefreshing()
-                self.isLoading = false
+                store.dispatch(LoadingAction(hidden: true, touchable: false))
                 if self.page == 0 {
                     self.events = []
                 }
@@ -70,11 +74,12 @@ class EventListTableViewController: UITableViewController {
             })
             break
         case .History:
-            self.isLoading = true
+//            self.isLoading = true
+            store.dispatch(LoadingAction(hidden: false, touchable: false))
             APIManager.sharedInstance.getEvents(0, page: self.page, handler: { (events) in
                 // TODO: weakself
                 self.refreshControl?.endRefreshing()
-                self.isLoading = false
+                store.dispatch(LoadingAction(hidden: true, touchable: false))
                 if self.page == 0 {
                     self.events = []
                 }
@@ -176,7 +181,8 @@ class EventListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell is InfiniteLoadingCell {
-            if !self.isLoading {
+            if store.state.loadingState.hidden == true {
+//            if !self.isLoading {
                 self.load()
             }
         }

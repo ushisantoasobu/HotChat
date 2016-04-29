@@ -88,7 +88,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     private func load() {
+        store.state.loadingState.hidden = false
         APIManager.sharedInstance.getChats(0, handler: { (chats) in
+            store.state.loadingState.hidden = true
             // TODO
             self.chats = chats
             self.tableView.reloadData()

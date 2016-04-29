@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="veY-xH-dXC">
-                    <rect key="frame" x="150" y="274" width="20" height="20"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="veY-xH-dXC">
+                    <rect key="frame" x="138.5" y="261.5" width="44" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="kXh-jg-M4G"/>
-                        <constraint firstAttribute="width" constant="20" id="q3Z-Pe-FxH"/>
+                        <constraint firstAttribute="height" constant="44" id="kXh-jg-M4G"/>
+                        <constraint firstAttribute="width" constant="44" id="q3Z-Pe-FxH"/>
                     </constraints>
                 </activityIndicatorView>
             </subviews>
@@ -25,6 +25,9 @@
                 <constraint firstItem="veY-xH-dXC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jUA-Os-QO5"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="indicator" destination="veY-xH-dXC" id="fFX-M0-Nqe"/>
+            </connections>
         </view>
     </objects>
 </document>

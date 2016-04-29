@@ -10,7 +10,10 @@ import UIKit
 
 class LoadingView: UIView {
 
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+
     override func awakeFromNib() {
+        self.indicator.color = UIColor.mainColor()
         self.backgroundColor = UIColor.clearColor()
     }
 

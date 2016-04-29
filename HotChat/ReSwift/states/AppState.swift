@@ -21,8 +21,8 @@ struct AppState: StateType {
 }
 
 struct LoadingState {
-    var hidden = true
-    var toucheable = false
+    var isLoading = false
+    var type :LoadingType = .Normal
 }
 
 // ↑ 汎用的なStateをどんな感じでつくっていくべきか迷う

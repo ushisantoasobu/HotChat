@@ -79,7 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
             return state.loadingState
         }
 
-        store.dispatch(LoadingAction(hidden: true, touchable: false))
+        store.dispatch(LoadingHideAction())
+
 
         return true
     }
@@ -109,7 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
     // MARK: - ReSwift
 
     func newState(state: LoadingState) {
-        self.loading?.hidden = state.hidden
+        self.loading?.setType(state.type)
+        self.loading?.hidden = !state.isLoading
 //        self.loading?.touchable = state.toucheable
     }
 

@@ -116,10 +116,10 @@ StoreSubscriber {
     }
 
     private func load() {
-        store.dispatch(LoadingAction(hidden: false, touchable: false))
+        store.dispatch(LoadingShowAction(type: .Normal))
         APIManager.sharedInstance.getChats(self.event.identifier, handler: { (chats) in
 
-            store.dispatch(LoadingAction(hidden: true, touchable: false))
+            store.dispatch(LoadingHideAction())
             store.dispatch(ChatListSuccessorPageAction(isLast: true, isEmpty: (chats.count == 0)))
 
             if chats.count == 0 {
@@ -135,10 +135,10 @@ StoreSubscriber {
     // MARK: - IB actions
 
     @IBAction func chatSendButtonTapped(sender: AnyObject) {
-        store.dispatch(LoadingAction(hidden: false, touchable: false))
+        store.dispatch(LoadingShowAction(type: .Masked))
         // MEMO : chatInputTextField.textもstateでもつ？？
         APIManager.sharedInstance.postChat(self.chatInputTextField.text!, handler: { (chat) in
-            store.dispatch(LoadingAction(hidden: true, touchable: false))
+            store.dispatch(LoadingHideAction())
             // TODO : weakself
             self.chatInputTextField.resignFirstResponder()
             self.chats.append(chat)

@@ -19,10 +19,11 @@ struct CommonListEmptyAction: Action { }
 
 // MARK: - Loading
 
-struct LoadingAction: Action {
-    let hidden :Bool
-    let touchable :Bool
+struct LoadingShowAction: Action {
+    let type :LoadingType
 }
+
+struct LoadingHideAction: Action { }
 
 // MARK: - CreateEvent
 

@@ -88,11 +88,11 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         let page = store.state.eventListState.paging.num
         switch store.state.eventListState.type! {
         case .Location:
-            store.dispatch(LoadingAction(hidden: false, touchable: false))
+            store.dispatch(LoadingShowAction(type: .Normal))
             APIManager.sharedInstance.getEvents(Location(), page: page, handler: { (events, isLastPage) in
                 // TODO : weakself
                 self.refreshControl?.endRefreshing()
-                store.dispatch(LoadingAction(hidden: true, touchable: false))
+                store.dispatch(LoadingHideAction())
 
                 // MEMO : ここイケてない？？
                 if page == 0 {
@@ -104,11 +104,11 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
             })
             break
         case .History:
-            store.dispatch(LoadingAction(hidden: false, touchable: false))
+            store.dispatch(LoadingShowAction(type: .Normal))
             APIManager.sharedInstance.getEvents(0, page: page, handler: { (events) in
                 // TODO: weakself
                 self.refreshControl?.endRefreshing()
-                store.dispatch(LoadingAction(hidden: true, touchable: false))
+                store.dispatch(LoadingHideAction())
 
                 // MEMO : ここイケてない？？
                 if page == 0 {
@@ -214,8 +214,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell is InfiniteLoadingCell {
-            if store.state.loadingState.hidden == true {
-//            if !self.isLoading {
+            if store.state.loadingState.isLoading != true {
                 self.load()
             }
         }

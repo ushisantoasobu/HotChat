@@ -8,13 +8,41 @@
 
 import UIKit
 
+enum LoadingType {
+    case Normal
+//    case NormalWhite
+    case Masked
+}
+
 class LoadingView: UIView {
 
     @IBOutlet weak var indicator: UIActivityIndicatorView!
 
     override func awakeFromNib() {
-        self.indicator.color = UIColor.mainColor()
-        self.backgroundColor = UIColor.clearColor()
+        self.setType(.Normal)
+    }
+
+    func setType(type :LoadingType) {
+        let indicatorColor: UIColor
+        let backgroundColor: UIColor
+        let touchable: Bool
+
+        switch type {
+        case .Normal:
+            backgroundColor = UIColor.clearColor()
+            indicatorColor = UIColor.mainColor()
+            touchable = false
+            break
+        case .Masked:
+            backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.45)
+            indicatorColor = UIColor.mainColor()
+            touchable = false
+            break
+        }
+
+        self.indicator.color = indicatorColor
+        self.backgroundColor = backgroundColor
+        self.userInteractionEnabled = touchable
     }
 
 }

@@ -31,9 +31,12 @@ struct AppReducer: Reducer {
         var state = state ?? LoadingState()
 
         switch action {
-        case let action as LoadingAction:
-            state.hidden = action.hidden
-            state.toucheable = action.touchable
+        case let action as LoadingShowAction:
+            state.type = action.type
+            state.isLoading = true
+            break
+        case _ as LoadingHideAction:
+            state.isLoading = false
             break
         default:
             break

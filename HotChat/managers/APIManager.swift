@@ -40,8 +40,12 @@ class APIManager {
     ]
 
     var chats = [
-        Chat(user: User(name: "ushisantoasobu"), message: "楽しみですね、よろしくお願いします！！", mine: true),
-        Chat(user: User(name: "高畑充希"), message: "全然人入ってない > < 見やすいけど寂しい", mine: false)
+        Chat(user: User(name: "ushisantoasobu", imageUrl: ""),
+            message: "楽しみですね、よろしくお願いします！！",
+            mine: true),
+        Chat(user: User(name: "高畑充希", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwwdDeeLxHZEs7idO3CrORiRtc3hOBGeIXbzslJZIeQkM-rZuU1A"),
+            message: "全然人入ってない > < 見やすいけど寂しい",
+            mine: false)
     ]
 
     // MARK: - public
@@ -110,7 +114,8 @@ class APIManager {
         let delay = 1.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
-            let chat = Chat(user: User(name: "ushisantoasobu"), message: chatMessage, mine: true)
+            let chat = Chat(user: User(name: "ushisantoasobu", imageUrl: ""),
+                message: chatMessage, mine: true)
             handler(chat)
         })
     }

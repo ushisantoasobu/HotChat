@@ -24,5 +24,6 @@ class AccountManager {
     init() {
         user.name = "ushisantoasobu"
         user.openFb = false
+        user.imageUrl = "https://pbs.twimg.com/profile_images/1745491150/image"
     }
 }

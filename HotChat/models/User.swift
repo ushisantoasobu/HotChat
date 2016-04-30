@@ -16,7 +16,8 @@ struct User {
 
     init() {}
 
-    init(name :String) {
+    init(name :String, imageUrl :String) {
         self.name = name
+        self.imageUrl = imageUrl
     }
 }

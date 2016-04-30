@@ -40,6 +40,15 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             self.bodyLabel.textColor = UIColor.whiteColor()
             self.bodyContainerView.backgroundColor = UIColor.lightGrayColor()
+
+            // temp code
+            if let avatar = self.avatarImageView {
+                let data = NSData(contentsOfURL: NSURL(string: chat.user.imageUrl)!)
+                if data == nil {
+                    return
+                }
+                avatar.image = UIImage(data: data!)
+            }
         }
     }
 

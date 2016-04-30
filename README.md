@@ -148,6 +148,10 @@ store.state.accountEditState.name = AccountManager.sharedInstance.user.name
 いや、なるほど！これもnijinkunがいっていたことか！！
 たとえばだけど、`store.dispatch().dispatch()` みたいに書いて、newStateは１回みたいな
 
+## hot reload
+
+ってiOSでもできるの？？
+
 ## MEMO
 
 - ReSwiftRouterとかReSwiftRecorderあたりでcontributeできないか・・・

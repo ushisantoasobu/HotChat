@@ -205,7 +205,11 @@ StoreSubscriber {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120.0
+        let chat = store.state.chatListState.event?.chats[indexPath.row]
+        if chat == nil {
+            return 0.0
+        }
+        return ChatTableViewCell.cellHeight(chat!)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

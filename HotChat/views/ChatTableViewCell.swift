@@ -58,5 +58,28 @@ class ChatTableViewCell: UITableViewCell {
         button.selected = !button.selected
     }
 
+    // MARK: - class func
+
+    class func cellHeight(chat :Chat) -> CGFloat {
+        // MEMO : bad code
+        var verticalMargin :CGFloat = 0.0
+        var horizontalMargin :CGFloat = 0.0
+        if chat.mine {
+            verticalMargin = 120 - 88
+            horizontalMargin = 320 - 248 - 8 - 8
+        } else {
+            verticalMargin = 136 - 75
+            horizontalMargin = 320 - 200 - 8 - 8
+        }
+        let tempLabel = UILabel(frame: CGRectMake(0.0, 0.0,
+            UIScreen.mainScreen().bounds.width - horizontalMargin, CGFloat.max))
+        tempLabel.font = UIFont.systemFontOfSize(14)
+        tempLabel.text = chat.message
+        tempLabel.numberOfLines = 0
+        tempLabel.sizeToFit()
+        print(tempLabel.frame.size.height)
+        return verticalMargin + tempLabel.frame.size.height + 8
+    }
+
     
 }

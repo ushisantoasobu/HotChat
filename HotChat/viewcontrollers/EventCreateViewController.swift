@@ -37,6 +37,12 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewWillAppear(animated)
 
         store.subscribe(self) { (state :AppState) -> EventCreateState in
+//            state.na
+
+            let aaa :Int = state.navigationState.getRouteSpecificState(state.navigationState.route)!
+            print("aaa::::::::")
+            print(aaa)
+
             return state.eventCreateState
         }
     }

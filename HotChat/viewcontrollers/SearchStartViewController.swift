@@ -57,14 +57,21 @@ class SearchStartViewController: UIViewController, Routable {
     }
 
     func createButtonTapped() {
+
+        store.dispatch(
+            SetRouteSpecificData(route: ["UINavigationController", EventCreateViewController.identifier],
+                data: 3)
+        )
+
         store.dispatch(
             SetRouteAction([
                 "UINavigationController",
                 EventCreateViewController.identifier
             ])
         )
+
     }
-    
+
 
     // MARK: - IB actions
 

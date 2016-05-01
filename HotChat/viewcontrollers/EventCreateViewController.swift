@@ -8,8 +8,11 @@
 
 import UIKit
 import ReSwift
+import ReSwiftRouter
 
-class EventCreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber {
+class EventCreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber, Routable {
+
+    static let identifier = "EventCreateViewController"
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -60,7 +63,11 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     private func setupHeader() {
         self.navigationItem.title = "イベントをつくる"
 
-        let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
+        let backButton = UIBarButtonItem(title: "<", style: .Plain,
+                                         target: self, action: #selector(EventCreateViewController.back))
+        self.navigationItem.leftBarButtonItem = backButton
+
+        let createButton = UIBarButtonItem(barButtonSystemItem: .Done,
                                            target: self, action: #selector(EventCreateViewController.doneButtonTapped))
         self.navigationItem.rightBarButtonItems = [createButton]
     }
@@ -70,6 +77,14 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.scrollEnabled = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+
+    func back() {
+        store.dispatch(
+            SetRouteAction([
+                "UINavigationController"
+                ])
+        )
     }
 
     func doneButtonTapped() {
@@ -84,7 +99,11 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         APIManager.sharedInstance.postEvent(event) {
             // TODO: weakself
             store.dispatch(CreateEventResetAction())
-            self.navigationController?.popViewControllerAnimated(true)
+            store.dispatch(
+                SetRouteAction([
+                    "UINavigationController"
+                    ])
+            )
         }
     }
 

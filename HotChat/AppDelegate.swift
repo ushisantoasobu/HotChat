@@ -8,17 +8,141 @@
 
 import UIKit
 import ReSwift
+import ReSwiftRouter
 
 var store = Store<AppState>(
     reducer: AppReducer(),
     state: nil
 )
 
+
+
+// TODO : どこか別のファイルに独立させたい
+class RootRoutable: Routable {
+
+    var routable: Routable
+
+    init(routable: Routable) {
+        self.routable = routable
+    }
+
+    internal func changeRouteSegment(fromSegment: RouteElementIdentifier,
+                                   to: RouteElementIdentifier,
+                                   animated: Bool,
+                                   completionHandler: RoutingCompletionHandler) -> Routable {
+
+        print("RootRoutable - changeRouteSegment")
+        print(to)
+
+        abort()
+    }
+
+    func pushRouteSegment(routeElementIdentifier: RouteElementIdentifier,
+                          animated: Bool,
+                          completionHandler: RoutingCompletionHandler) -> Routable {
+        completionHandler()
+
+        print("RootRoutable - pushRouteSegment")
+        print(routeElementIdentifier)
+
+        return routable
+    }
+
+    func popRouteSegment(routeElementIdentifier: RouteElementIdentifier,
+                         animated: Bool,
+                         completionHandler: RoutingCompletionHandler) {
+        completionHandler()
+
+        print("RootRoutable - popRouteSegment")
+        print(routeElementIdentifier)
+    }
+}
+
+extension UINavigationController: Routable {
+
+    public func changeRouteSegment(fromSegment: RouteElementIdentifier,
+                                   to: RouteElementIdentifier,
+                                   animated: Bool,
+                                   completionHandler: RoutingCompletionHandler) -> Routable {
+
+        print("UINavigationController - changeRouteSegment")
+        print(to)
+
+        if (to == AccountEditViewController.identifier) {
+            completionHandler()
+            let vc = AccountEditViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            return nav
+        } else if (to == EventCreateViewController.identifier) {
+            completionHandler()
+            let vc = EventCreateViewController() as Routable
+            return vc
+        }
+
+        abort()
+    }
+
+    public func pushRouteSegment(
+        routeElementIdentifier: RouteElementIdentifier,
+        animated: Bool,
+        completionHandler: RoutingCompletionHandler) -> Routable {
+
+        print("UINavigationController - pushRouteSegment")
+        print(routeElementIdentifier)
+
+        if (routeElementIdentifier == AccountEditViewController.identifier) {
+            completionHandler()
+            let vc = AccountEditViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            presentViewController(nav, animated: true, completion: nil)
+            return nav
+        } else if (routeElementIdentifier == EventCreateViewController.identifier) {
+            completionHandler()
+            let vc = EventCreateViewController() as Routable
+            pushViewController(EventCreateViewController(), animated: true)
+            return vc
+        }
+        
+        abort() // ??
+    }
+
+    public func popRouteSegment(viewControllerIdentifier: RouteElementIdentifier,
+                                animated: Bool,
+                                completionHandler: RoutingCompletionHandler) {
+
+        print("UINavigationController - popRouteSegment")
+        print(viewControllerIdentifier)
+
+        if (viewControllerIdentifier == AccountEditViewController.identifier) {
+            dismissViewControllerAnimated(true, completion: completionHandler)
+            return
+        } else if (viewControllerIdentifier == EventCreateViewController.identifier) {
+            completionHandler()
+            popViewControllerAnimated(true)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
     var window: UIWindow?
     var loading :LoadingView?
+    var rootViewController: Routable!
+    var router: Router<AppState>!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -32,6 +156,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
 
+        rootViewController = nav
+
+        // setup routing
+        router = Router<AppState>(store: store, rootRoutable: RootRoutable(routable: rootViewController), stateSelector: { (state) -> NavigationState in
+            return state.navigationState
+        })
+
+        // setup loading
         if let loading = self.loading {
             loading.translatesAutoresizingMaskIntoConstraints = false
             self.window?.addSubview(loading)
@@ -80,6 +212,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
         }
 
         store.dispatch(LoadingHideAction())
+
+
+
+
+
+        store.dispatch { state, store in
+            if state.navigationState.route == [] {
+                return SetRouteAction([
+                    "UINavigationController"
+                ])
+            } else {
+                return nil
+            }
+        }
 
 
         return true

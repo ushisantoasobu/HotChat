@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import ReSwiftRouter
 
-class SearchStartViewController: UIViewController {
+class SearchStartViewController: UIViewController, Routable {
+
+    static let identifier = "SearchStartViewController"
 
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
@@ -45,14 +48,21 @@ class SearchStartViewController: UIViewController {
     }
 
     func userButtonTapped() {
-        let vc = AccountEditViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        self.presentViewController(nav, animated: true, completion: nil)
+        store.dispatch(
+            SetRouteAction([
+                "UINavigationController",
+                AccountEditViewController.identifier
+            ])
+        )
     }
 
     func createButtonTapped() {
-        let vc = EventCreateViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        store.dispatch(
+            SetRouteAction([
+                "UINavigationController",
+                EventCreateViewController.identifier
+            ])
+        )
     }
     
 

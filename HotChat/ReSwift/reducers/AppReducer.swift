@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import ReSwiftRouter
 
 struct AppReducer: Reducer {
 
@@ -18,8 +19,9 @@ struct AppReducer: Reducer {
             //            repositories: repositoriesReducer(state?.repositories, action: action),
             //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
 
+            navigationState: NavigationReducer.handleAction(action, state: state?.navigationState),
+
             loadingState: loadingReducer(state?.loadingState, action: action),
-//            tableState:  tableReducer(state?.tableState, action: action),
             eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
             accountEditState: accountEditReducer(state?.accountEditState, action: action),
             eventListState: eventListReducer(state?.eventListState, action: action),

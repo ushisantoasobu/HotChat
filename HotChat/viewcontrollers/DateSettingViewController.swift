@@ -12,6 +12,8 @@ import UIKit
 
 class DateSettingViewController: UIViewController {
 
+    static let identifier = "DateSettingViewController"
+
     @IBOutlet private weak var datePicker: UIDatePicker!
 
     var initialDate :NSDate?

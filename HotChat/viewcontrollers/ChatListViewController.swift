@@ -13,6 +13,8 @@ class ChatListViewController: UIViewController,
 UITableViewDelegate, UITableViewDataSource,
 StoreSubscriber {
 
+    static let identifier = "ChatListViewController"
+
     @IBOutlet weak var fullSizeKeyboardHideButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatInputView: UIView!

@@ -10,6 +10,8 @@ import UIKit
 
 class TextInputViewController: UIViewController {
 
+    static let identifier = "TextInputViewController"
+
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var counterLabel: UILabel!
 

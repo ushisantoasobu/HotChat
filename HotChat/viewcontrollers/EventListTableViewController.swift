@@ -11,6 +11,8 @@ import ReSwift
 
 class EventListTableViewController: UITableViewController, StoreSubscriber {
 
+    static let identifier = "EventListTableViewController"
+
     init(type :EventSearchType) {
         super.init(nibName: "EventListTableViewController", bundle: nil)
 

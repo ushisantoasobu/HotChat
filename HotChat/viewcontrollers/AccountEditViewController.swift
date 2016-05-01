@@ -8,8 +8,11 @@
 
 import UIKit
 import ReSwift
+import ReSwiftRouter
 
-class AccountEditViewController: UIViewController, StoreSubscriber {
+class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
+
+    static let identifier = "AccountEditViewController"
 
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var facebookSwitch: UISwitch!
@@ -87,7 +90,11 @@ class AccountEditViewController: UIViewController, StoreSubscriber {
 
     func closeButtonTapped() {
         store.dispatch(AccountEditResetAction())
-        self.dismissViewControllerAnimated(true, completion: nil)
+        store.dispatch(
+            SetRouteAction([
+                "UINavigationController"
+                ])
+        )
     }
 
     func doneButtonTapped() {
@@ -105,7 +112,11 @@ class AccountEditViewController: UIViewController, StoreSubscriber {
         let alert = UIAlertController(title: nil, message: "アカウント設定を更新しました！", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
             // TODO: weakself
-            self.dismissViewControllerAnimated(true, completion: nil)
+            store.dispatch(
+                SetRouteAction([
+                    "UINavigationController"
+                    ])
+            )
         }))
         self.presentViewController(alert, animated:true, completion:nil)
         return

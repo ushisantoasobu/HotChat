@@ -158,6 +158,8 @@ Routable {
             return
         }
 
+        self.chatInputTextField.resignFirstResponder()
+
         store.dispatch(LoadingShowAction(type: .Masked))
         // MEMO : chatInputTextField.textもstateでもつ？？
         APIManager.sharedInstance.postChat(self.chatInputTextField.text!, handler: { (chat) in
@@ -166,7 +168,6 @@ Routable {
 
             // MEMO : chatInputTextField.textもstateでもつ？？
             self.chatInputTextField.text = ""
-            self.chatInputTextField.resignFirstResponder()
             store.dispatch(ChatListAddChatAction(chat: chat))
         })
     }

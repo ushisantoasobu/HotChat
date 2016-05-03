@@ -11,6 +11,7 @@ import ReSwift
 import ReSwiftRouter
 import ReSwiftRecorder
 
+
 var store = Store<AppState>(
     reducer: AppReducer(),
     state: nil
@@ -44,7 +45,6 @@ let AppActionTypeMap: TypeMap = [
  */
 
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
@@ -57,75 +57,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
         self.setupAppearance()
 
-        self.loading = LoadingView.getView("LoadingView") as? LoadingView
-
+        // setup initialVC
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let vc = SearchStartViewController(nibName: "SearchStartViewController", bundle: nil)
+        let vc = SearchStartViewController()
         let nav = UINavigationController(rootViewController: vc)
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
 
-        rootViewController = nav
+        // setup loading
+        self.loading = LoadingView.getView("LoadingView") as? LoadingView
+        if let loading = self.loading {
+            self.window?.addSubviewWithZeroConstraints(loading)
+        }
 
         // setup routing
+        rootViewController = nav
         router = Router<AppState>(store: store, rootRoutable: RootRoutable(routable: rootViewController), stateSelector: { (state) -> NavigationState in
             return state.navigationState
         })
 
-        // setup loading
-        if let loading = self.loading {
-            loading.translatesAutoresizingMaskIntoConstraints = false
-            self.window?.addSubview(loading)
-
-            self.window?.addConstraint(NSLayoutConstraint(
-                item: self.window!,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: loading,
-                attribute: .Top,
-                multiplier: 1.0,
-                constant: 0.0))
-
-            self.window?.addConstraint(NSLayoutConstraint(
-                item: self.window!,
-                attribute: .Left,
-                relatedBy: .Equal,
-                toItem: loading,
-                attribute: .Left,
-                multiplier: 1.0,
-                constant: 0.0))
-
-            self.window?.addConstraint(NSLayoutConstraint(
-                item: self.window!,
-                attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: loading,
-                attribute: .Bottom,
-                multiplier: 1.0,
-                constant: 0.0))
-
-            self.window?.addConstraint(NSLayoutConstraint(
-                item: self.window!,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: loading,
-                attribute: .Right,
-                multiplier: 1.0,
-                constant: 0.0))
-
-            loading.layoutIfNeeded()
-        }
-
+        // setup subscribe (for only loading)
         store.subscribe(self) { (state :AppState) -> LoadingState in
             return state.loadingState
         }
 
+        // some store dispatches
         store.dispatch(LoadingHideAction())
-
-
-
-
-
         store.dispatch { state, store in
             if state.navigationState.route == [] {
                 return SetRouteAction([
@@ -135,7 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
                 return nil
             }
         }
-
 
         return true
     }
@@ -177,8 +133,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
     // MARK: - private
 
+    /**
+     UIAppearanceの設定
+     */
     private func setupAppearance() {
-//        UINavigationBar.appearance().backgroundColor = UIColor.mainColor()
         UINavigationBar.appearance().tintColor = UIColor.mainColor()
     }
 }

@@ -11,7 +11,6 @@ import ReSwiftRouter
 
 let RootIdentifier = "root"
 
-// TODO : どこか別のファイルに独立させたい
 class RootRoutable: Routable {
 
     var routable: Routable

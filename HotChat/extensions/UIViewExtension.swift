@@ -17,4 +17,47 @@ extension UIView {
         return views[0] as! UIView
     }
 
+    func addSubviewWithZeroConstraints(view :UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(view)
+
+        self.addConstraint(NSLayoutConstraint(
+            item: self,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0.0))
+
+        self.addConstraint(NSLayoutConstraint(
+            item: self,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0.0))
+
+        self.addConstraint(NSLayoutConstraint(
+            item: self,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0.0))
+
+        self.addConstraint(NSLayoutConstraint(
+            item: self,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: view,
+            attribute: .Right,
+            multiplier: 1.0,
+            constant: 0.0))
+
+        view.layoutIfNeeded()
+    }
+
 }

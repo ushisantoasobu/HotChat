@@ -11,16 +11,12 @@ import ReSwift
 import ReSwiftRouter
 
 struct AppState: StateType, HasNavigationState {
-
     var navigationState: NavigationState
-
     var loadingState = LoadingState()
     var eventCreateState = EventCreateState()
     var accountEditState = AccountEditState()
     var eventListState = EventListState()
     var chatListState = ChatListState()
-
-    // future...we will add Router
 }
 
 struct LoadingState {

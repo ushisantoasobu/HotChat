@@ -23,12 +23,6 @@ class ChatTableViewCell: UITableViewCell {
         self.bodyContainerView.layer.cornerRadius = 8.0
         self.selectionStyle = .None
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func setChat(chat :Chat) {
         self.nameLabel?.text = chat.user.name

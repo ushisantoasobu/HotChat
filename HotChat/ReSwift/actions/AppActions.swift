@@ -9,7 +9,8 @@
 import Foundation
 import ReSwift
 
-// MEMO: 一旦すべてのActionをここに書いていくこととする（複数のファイルにはしない）
+// MEMO : 一旦すべてのActionをここに書いていくこととする（複数のファイルにはしない）
+// MEMO : ReSwiftRecorder試すために"StandardActionConvertible"の形で書いてる
 
 // MARK: - Loading
 
@@ -198,20 +199,3 @@ struct AccountEditResetAction: StandardActionConvertible {
         return StandardAction(type: AccountEditResetAction.type, payload: nil, isTypedAction: true)
     }
 }
-
-// MARK: - DateSetting
-
-//struct DateSettingSetAction: Action {
-//    let date :NSData
-//}
-
-//struct DateSettingSetAction: StandardActionConvertible {
-//    static let type = "DateSettingSetAction"
-//    let date :NSData
-//    init(date :NSData) { self.date = date }
-//    init(_ standardAction: StandardAction) { self.date = NSData }
-//    func toStandardAction() -> StandardAction {
-//        return StandardAction(type: DateSettingSetAction.type, payload: ["date" : date], isTypedAction: true)
-//    }
-//}
-

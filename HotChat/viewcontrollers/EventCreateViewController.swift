@@ -37,12 +37,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewWillAppear(animated)
 
         store.subscribe(self) { (state :AppState) -> EventCreateState in
-//            state.na
-
-//            let aaa :Int = state.navigationState.getRouteSpecificState(state.navigationState.route)!
-//            print("aaa::::::::")
-//            print(aaa)
-
             return state.eventCreateState
         }
     }
@@ -103,7 +97,6 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
 
         let event = Event(identifier: 1, name: store.state.eventCreateState.name!, chatCount: 0)
         APIManager.sharedInstance.postEvent(event) {
-            // TODO: weakself
             store.dispatch(CreateEventResetAction())
             store.dispatch(
                 SetRouteAction([

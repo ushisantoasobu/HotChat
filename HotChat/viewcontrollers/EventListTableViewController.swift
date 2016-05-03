@@ -173,8 +173,6 @@ class EventListTableViewController: UITableViewController, StoreSubscriber, Rout
         return cell
     }
 
-    // MARK: - XXXXX
-
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let event = store.state.eventListState.events![indexPath.row]
         let route = [RootIdentifier, EventListTableViewController.identifier, ChatListViewController.identifier]
@@ -184,7 +182,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber, Rout
 
     // MARK: - Table view delegate
 
-        override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return EventTableViewCell.cellHeight()
     }
 

@@ -14,7 +14,6 @@
                 <outlet property="emptyView" destination="moW-r5-fs2" id="r0Q-LP-aKN"/>
                 <outlet property="fullSizeKeyboardHideButton" destination="lxK-sI-ZiM" id="0Mj-jO-oNJ"/>
                 <outlet property="tableView" destination="Ihh-84-9d8" id="FbW-Oo-BkJ"/>
-                <outlet property="tableViewBottomConstraint" destination="xBF-Jo-e7X" id="Dag-m7-4Kp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

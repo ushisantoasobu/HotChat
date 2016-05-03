@@ -21,7 +21,6 @@ Routable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatInputView: UIView!
     @IBOutlet weak var chatInputTextField: UITextField!
-    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint! // 不要？？
     @IBOutlet weak var chatInputViewBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var emptyView: UIView!
@@ -104,8 +103,6 @@ Routable {
     }
 
     private func setupHeader() {
-//        self.navigationItem.title = "チャット一覧"
-
         let backButton = UIBarButtonItem(title: "<", style: .Plain,
                                          target: self, action: #selector(ChatListViewController.back))
         self.navigationItem.leftBarButtonItem = backButton

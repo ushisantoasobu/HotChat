@@ -14,13 +14,7 @@ struct AppReducer: Reducer {
 
     func handleAction(action: Action, state: AppState?) -> AppState {
         return AppState(
-            //            navigationState: NavigationReducer.handleAction(action, state: state?.navigationState),
-            //            authenticationState: authenticationReducer(state?.authenticationState, action: action),
-            //            repositories: repositoriesReducer(state?.repositories, action: action),
-            //            bookmarks: bookmarksReducer(state?.bookmarks, action: action)
-
             navigationState: NavigationReducer.handleAction(action, state: state?.navigationState),
-
             loadingState: loadingReducer(state?.loadingState, action: action),
             eventCreateState: eventCreateReducer(state?.eventCreateState, action: action),
             accountEditState: accountEditReducer(state?.accountEditState, action: action),
@@ -47,24 +41,9 @@ struct AppReducer: Reducer {
         return state
     }
 
-//    func tableReducer(state: TableState?, action: Action) -> TableState {
-//        var state = state ?? TableState()
-//
-//        switch action {
-//        case let action as TableAction:
-//            state.isEmpty = action.isEmpty
-//            break
-//        default:
-//            break
-//        }
-//
-//        return state
-//    }
-
     // MARK: - EventCreate
 
     func eventCreateReducer(state: EventCreateState?, action: Action) -> EventCreateState {
-//        var state = state ?? initialAuthenticationState()
         var state = state ?? EventCreateState() // TODO??
 
         switch action {
@@ -134,7 +113,7 @@ struct AppReducer: Reducer {
         return state
     }
 
-    // MARK: - XXXXX
+    // MARK: - ChatList
 
     func chatListReducer(state: ChatListState?, action: Action) -> ChatListState {
         var state = state ?? ChatListState()

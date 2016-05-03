@@ -75,15 +75,23 @@ class TextInputViewController: UIViewController, Routable {
     }
 
     func back() {
-        store.dispatch(SetRouteAction([
-            RootIdentifier,
-            EventCreateViewController.identifier
-            ]))
+        // MEMO : ??? こんなことしなくちゃいけない？？ 上でも似たことやってるね、、、ここはおれの設計ミスか
+        let route = store.state.navigationState.route
+        if route == [RootIdentifier, EventCreateViewController.identifier, TextInputViewController.identifier] {
+            store.dispatch(SetRouteAction([
+                RootIdentifier,
+                EventCreateViewController.identifier
+                ]))
+        } else if route == [RootIdentifier, AccountEditViewController.identifier, TextInputViewController.identifier] {
+            store.dispatch(SetRouteAction([
+                RootIdentifier,
+                AccountEditViewController.identifier
+                ]))
+        }
     }
 
     func doneButtonTapped() {
         if self.textSetDone != nil {
-            store.dispatch(CreateEventNameAction(name: self.textField.text!))
             self.textSetDone!(self.textField.text!)
         }
     }

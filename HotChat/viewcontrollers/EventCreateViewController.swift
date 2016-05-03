@@ -125,7 +125,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
                     RootIdentifier,
                     EventCreateViewController.identifier
                     ]))
-                store.dispatch(AccountEditNameAction(name: text))
+                store.dispatch(CreateEventNameAction(name: text))
             }
             let route = [RootIdentifier,
                          EventCreateViewController.identifier,

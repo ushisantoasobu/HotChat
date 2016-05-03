@@ -111,12 +111,7 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
 
         let alert = UIAlertController(title: nil, message: "アカウント設定を更新しました！", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
-            // TODO: weakself
-            store.dispatch(
-                SetRouteAction([
-                    RootIdentifier
-                    ])
-            )
+            self.closeButtonTapped()
         }))
         self.presentViewController(alert, animated:true, completion:nil)
         return

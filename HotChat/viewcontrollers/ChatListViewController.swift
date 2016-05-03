@@ -168,6 +168,7 @@ Routable {
 
             // MEMO : chatInputTextField.textもstateでもつ？？
             self.chatInputTextField.text = ""
+            store.dispatch(ChatListSuccessorPageAction(isLast: true, isEmpty: false))
             store.dispatch(ChatListAddChatAction(chat: chat))
         })
     }

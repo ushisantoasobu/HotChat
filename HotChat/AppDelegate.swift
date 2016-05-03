@@ -9,11 +9,41 @@
 import UIKit
 import ReSwift
 import ReSwiftRouter
+import ReSwiftRecorder
 
 var store = Store<AppState>(
     reducer: AppReducer(),
     state: nil
 )
+
+/*
+var store = RecordingMainStore<AppState>(reducer: AppReducer(),
+                                         state: nil,
+                                         typeMaps: [AppActionTypeMap, ReSwiftRouter.typeMap],
+                                         recording: "recording.json")
+
+let AppActionTypeMap: TypeMap = [
+    LoadingShowAction.type : LoadingShowAction.self,
+    LoadingHideAction.type : LoadingHideAction.self,
+    CreateEventNameAction.type : CreateEventNameAction.self,
+    CreateEventDateAction.type : CreateEventDateAction.self,
+    CreateEventResetAction.type : CreateEventResetAction.self,
+    EventListChangeTypeAction.type : EventListChangeTypeAction.self,
+    EventListAddEventsAction.type : EventListAddEventsAction.self,
+    EventListResetEventsAction.type : EventListResetEventsAction.self,
+    EventListSuccessorPageAction.type : EventListSuccessorPageAction.self,
+    ChatListSetEventAction.type : ChatListSetEventAction.self,
+    ChatListAddChatsAction.type : ChatListAddChatsAction.self,
+    ChatListAddChatAction.type : ChatListAddChatAction.self,
+    ChatListResetChatsAction.type : ChatListResetChatsAction.self,
+    ChatListSuccessorPageAction.type : ChatListSuccessorPageAction.self,
+    AccountEditNameAction.type : AccountEditNameAction.self,
+    AccountEditOpenFbAction.type : AccountEditOpenFbAction.self,
+    AccountEditResetAction.type : AccountEditResetAction.self
+]
+ */
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {

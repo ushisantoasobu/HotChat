@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum EventSearchType {
+enum EventSearchType :Int {
     case Location
     case History
 }

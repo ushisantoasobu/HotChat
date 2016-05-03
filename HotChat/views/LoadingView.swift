@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LoadingType {
+enum LoadingType :Int {
     case Normal
 //    case NormalWhite
     case Masked

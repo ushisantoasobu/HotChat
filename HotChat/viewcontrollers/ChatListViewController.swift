@@ -31,7 +31,7 @@ Routable {
         super.init(nibName: "ChatListViewController", bundle: nil)
 
         let event :Event = store.state.navigationState.getRouteSpecificState([
-            AppDelegate.rootIdentifier,
+            RootIdentifier,
             EventListTableViewController.identifier,
             ChatListViewController.identifier
             ])!
@@ -132,7 +132,7 @@ Routable {
     }
 
     func back() {
-        store.dispatch(SetRouteAction([AppDelegate.rootIdentifier, EventListTableViewController.identifier]))
+        store.dispatch(SetRouteAction([RootIdentifier, EventListTableViewController.identifier]))
     }
 
     private func load() {

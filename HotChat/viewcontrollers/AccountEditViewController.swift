@@ -92,7 +92,7 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
         store.dispatch(AccountEditResetAction())
         store.dispatch(
             SetRouteAction([
-                AppDelegate.rootIdentifier
+                RootIdentifier
                 ])
         )
     }
@@ -114,7 +114,7 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
             // TODO: weakself
             store.dispatch(
                 SetRouteAction([
-                    AppDelegate.rootIdentifier
+                    RootIdentifier
                     ])
             )
         }))
@@ -134,12 +134,12 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
     @IBAction func nameButtonTapped(sender: AnyObject) {
         let textSetDoneHandler = {(text :String) in
             store.dispatch(SetRouteAction([
-                AppDelegate.rootIdentifier,
+                RootIdentifier,
                 AccountEditViewController.identifier
             ]))
             store.dispatch(AccountEditNameAction(name: text))
         }
-        let route = [AppDelegate.rootIdentifier,
+        let route = [RootIdentifier,
                      AccountEditViewController.identifier,
                      TextInputViewController.identifier]
         store.dispatch(SetRouteSpecificData(route: route, data: textSetDoneHandler))

@@ -9,6 +9,8 @@
 import Foundation
 import ReSwiftRouter
 
+let RootIdentifier = "root"
+
 // TODO : どこか別のファイルに独立させたい
 class RootRoutable: Routable {
 
@@ -103,7 +105,7 @@ extension UINavigationController: Routable {
             vc.initialDate = store.state.eventCreateState.date
             vc.dateSetDone = {(date :NSDate) in
                 store.dispatch(SetRouteAction([
-                    AppDelegate.rootIdentifier,
+                    RootIdentifier,
                     EventCreateViewController.identifier
                     ]))
             }

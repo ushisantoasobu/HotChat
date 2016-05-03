@@ -26,15 +26,15 @@ class TextInputViewController: UIViewController, Routable {
         let route = store.state.navigationState.route
 
         // MEMO : こんなんでいいのか・・・いいはずがないw
-        if route == [AppDelegate.rootIdentifier, EventCreateViewController.identifier, TextInputViewController.identifier] {
+        if route == [RootIdentifier, EventCreateViewController.identifier, TextInputViewController.identifier] {
             self.textSetDone = store.state.navigationState.getRouteSpecificState([
-                AppDelegate.rootIdentifier,
+                RootIdentifier,
                 EventCreateViewController.identifier,
                 TextInputViewController.identifier
                 ])
-        } else if route == [AppDelegate.rootIdentifier, AccountEditViewController.identifier, TextInputViewController.identifier] {
+        } else if route == [RootIdentifier, AccountEditViewController.identifier, TextInputViewController.identifier] {
             self.textSetDone = store.state.navigationState.getRouteSpecificState([
-                AppDelegate.rootIdentifier,
+                RootIdentifier,
                 AccountEditViewController.identifier,
                 TextInputViewController.identifier
                 ])
@@ -76,7 +76,7 @@ class TextInputViewController: UIViewController, Routable {
 
     func back() {
         store.dispatch(SetRouteAction([
-            AppDelegate.rootIdentifier,
+            RootIdentifier,
             EventCreateViewController.identifier
             ]))
     }

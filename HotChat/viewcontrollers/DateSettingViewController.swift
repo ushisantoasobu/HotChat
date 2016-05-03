@@ -62,7 +62,7 @@ class DateSettingViewController: UIViewController, Routable {
 
     func back() {
         store.dispatch(SetRouteAction([
-            AppDelegate.rootIdentifier,
+            RootIdentifier,
             EventCreateViewController.identifier
             ]))
     }

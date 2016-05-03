@@ -50,7 +50,7 @@ class SearchStartViewController: UIViewController, Routable {
     func userButtonTapped() {
         store.dispatch(
             SetRouteAction([
-                AppDelegate.rootIdentifier,
+                RootIdentifier,
                 AccountEditViewController.identifier
             ])
         )
@@ -59,7 +59,7 @@ class SearchStartViewController: UIViewController, Routable {
     func createButtonTapped() {
         store.dispatch(
             SetRouteAction([
-                AppDelegate.rootIdentifier,
+                RootIdentifier,
                 EventCreateViewController.identifier
             ])
         )
@@ -69,13 +69,13 @@ class SearchStartViewController: UIViewController, Routable {
     // MARK: - IB actions
 
     @IBAction func locationButtonTapped(sender: AnyObject) {
-        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier]
+        let route = [RootIdentifier, EventListTableViewController.identifier]
         store.dispatch(SetRouteSpecificData(route: route, data: EventSearchType.Location))
         store.dispatch(SetRouteAction(route))
     }
 
     @IBAction func historyButtonTapped(sender: AnyObject) {
-        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier]
+        let route = [RootIdentifier, EventListTableViewController.identifier]
         store.dispatch(SetRouteSpecificData(route: route, data: EventSearchType.History))
         store.dispatch(SetRouteAction(route))
     }

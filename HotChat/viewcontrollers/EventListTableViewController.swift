@@ -17,7 +17,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber, Rout
     init() {
         super.init(nibName: "EventListTableViewController", bundle: nil)
         let type :EventSearchType = store.state.navigationState.getRouteSpecificState([
-            AppDelegate.rootIdentifier,
+            RootIdentifier,
             EventListTableViewController.identifier
             ])!
         store.dispatch(EventListChangeTypeAction(type: type))
@@ -135,7 +135,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber, Rout
     }
 
     func back() {
-        store.dispatch(SetRouteAction([AppDelegate.rootIdentifier]))
+        store.dispatch(SetRouteAction([RootIdentifier]))
     }
 
     // MARK: - Table view data source
@@ -177,7 +177,7 @@ class EventListTableViewController: UITableViewController, StoreSubscriber, Rout
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let event = store.state.eventListState.events![indexPath.row]
-        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier, ChatListViewController.identifier]
+        let route = [RootIdentifier, EventListTableViewController.identifier, ChatListViewController.identifier]
         store.dispatch(SetRouteSpecificData(route: route, data: event))
         store.dispatch(SetRouteAction(route))
     }

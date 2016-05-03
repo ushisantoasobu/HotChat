@@ -18,8 +18,6 @@ var store = Store<AppState>(
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
 
-    static let rootIdentifier = "root"
-
     var window: UIWindow?
     var loading :LoadingView?
     var rootViewController: Routable!
@@ -101,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
         store.dispatch { state, store in
             if state.navigationState.route == [] {
                 return SetRouteAction([
-                    AppDelegate.rootIdentifier
+                    RootIdentifier
                 ])
             } else {
                 return nil

@@ -88,7 +88,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     func back() {
         store.dispatch(
             SetRouteAction([
-                AppDelegate.rootIdentifier
+                RootIdentifier
                 ])
         )
     }
@@ -107,7 +107,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             store.dispatch(CreateEventResetAction())
             store.dispatch(
                 SetRouteAction([
-                    AppDelegate.rootIdentifier
+                    RootIdentifier
                     ])
             )
         }
@@ -120,7 +120,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         case 0:
             store.dispatch(
                 SetRouteAction([
-                    AppDelegate.rootIdentifier,
+                    RootIdentifier,
                     EventCreateViewController.identifier,
                     DateSettingViewController.identifier
                     ])
@@ -129,12 +129,12 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         case 1:
             let textSetDoneHandler = {(text :String) in
                 store.dispatch(SetRouteAction([
-                    AppDelegate.rootIdentifier,
+                    RootIdentifier,
                     EventCreateViewController.identifier
                     ]))
                 store.dispatch(AccountEditNameAction(name: text))
             }
-            let route = [AppDelegate.rootIdentifier,
+            let route = [RootIdentifier,
                          EventCreateViewController.identifier,
                          TextInputViewController.identifier]
             store.dispatch(SetRouteSpecificData(route: route, data: textSetDoneHandler))

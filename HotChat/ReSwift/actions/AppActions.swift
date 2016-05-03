@@ -11,12 +11,6 @@ import ReSwift
 
 // MEMO: 一旦すべてのActionをここに書いていくこととする（複数のファイルにはしない）
 
-// MARK: - Common
-
-struct CommonShowLoadingAction: Action { }
-struct CommonHideLoadingAction: Action { }
-struct CommonListEmptyAction: Action { }
-
 // MARK: - Loading
 
 struct LoadingShowAction: Action {
@@ -39,16 +33,6 @@ struct CreateEventResetAction: Action {
 }
 
 // MARK: - EventList
-
-// MEMO: 以下分ける必要あるのかわからない、まずはわけてつくってみる => やっぱ一旦やめる
-
-//struct EventListLocationAddAction: Action {
-//    let list :[Event]
-//}
-//
-//struct EventListHistoryAddAction: Action {
-//    let list :[Event]
-//}
 
 struct EventListChangeTypeAction: Action {
     let type :EventSearchType

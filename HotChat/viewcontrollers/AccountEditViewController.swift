@@ -132,22 +132,18 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
     }
 
     @IBAction func nameButtonTapped(sender: AnyObject) {
-        let vc = TextInputViewController()
-        vc.textSetDone = {(text :String) in
-            // TODO: weakself
+        let textSetDoneHandler = {(text :String) in
             store.dispatch(SetRouteAction([
-                AppDelegate.rootIdentifier
+                AppDelegate.rootIdentifier,
+                AccountEditViewController.identifier
             ]))
             store.dispatch(AccountEditNameAction(name: text))
         }
-
-        store.dispatch(
-            SetRouteAction([
-                AppDelegate.rootIdentifier,
-                AccountEditViewController.identifier,
-                TextInputViewController.identifier
-                ])
-        )
+        let route = [AppDelegate.rootIdentifier,
+                     AccountEditViewController.identifier,
+                     TextInputViewController.identifier]
+        store.dispatch(SetRouteSpecificData(route: route, data: textSetDoneHandler))
+        store.dispatch(SetRouteAction(route))
     }
 
     @IBAction func facebookSwitchChanged(sender: UISwitch) {

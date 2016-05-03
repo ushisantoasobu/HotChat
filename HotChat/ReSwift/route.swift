@@ -94,14 +94,7 @@ extension UINavigationController: Routable {
             return self
         } else if (routeElementIdentifier == TextInputViewController.identifier) {
             completionHandler()
-            let vc = TextInputViewController()
-            vc.textSetDone = {(text :String) in
-                store.dispatch(SetRouteAction([
-                    AppDelegate.rootIdentifier,
-                    EventCreateViewController.identifier
-                    ]))
-            }
-            pushViewController(vc, animated: true)
+            pushViewController(TextInputViewController(), animated: true)
             return self
         } else if (routeElementIdentifier == DateSettingViewController.identifier) {
 

@@ -127,13 +127,18 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             )
             break
         case 1:
-            store.dispatch(
-                SetRouteAction([
+            let textSetDoneHandler = {(text :String) in
+                store.dispatch(SetRouteAction([
                     AppDelegate.rootIdentifier,
-                    EventCreateViewController.identifier,
-                    TextInputViewController.identifier
-                    ])
-            )
+                    EventCreateViewController.identifier
+                    ]))
+                store.dispatch(AccountEditNameAction(name: text))
+            }
+            let route = [AppDelegate.rootIdentifier,
+                         EventCreateViewController.identifier,
+                         TextInputViewController.identifier]
+            store.dispatch(SetRouteSpecificData(route: route, data: textSetDoneHandler))
+            store.dispatch(SetRouteAction(route))
             break
         case 2: break
         default: break

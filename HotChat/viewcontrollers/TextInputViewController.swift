@@ -22,6 +22,23 @@ class TextInputViewController: UIViewController, Routable {
 
     init() {
         super.init(nibName: "TextInputViewController", bundle: nil)
+
+        let route = store.state.navigationState.route
+
+        // MEMO : こんなんでいいのか・・・いいはずがないw
+        if route == [AppDelegate.rootIdentifier, EventCreateViewController.identifier, TextInputViewController.identifier] {
+            self.textSetDone = store.state.navigationState.getRouteSpecificState([
+                AppDelegate.rootIdentifier,
+                EventCreateViewController.identifier,
+                TextInputViewController.identifier
+                ])
+        } else if route == [AppDelegate.rootIdentifier, AccountEditViewController.identifier, TextInputViewController.identifier] {
+            self.textSetDone = store.state.navigationState.getRouteSpecificState([
+                AppDelegate.rootIdentifier,
+                AccountEditViewController.identifier,
+                TextInputViewController.identifier
+                ])
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

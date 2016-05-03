@@ -152,6 +152,10 @@ store.state.accountEditState.name = AccountManager.sharedInstance.user.name
 
 ってiOSでもできるの？？
 
+## ReSwiftRouter
+
+- presentViewControllerもReSwiftRouterに入れる？？（ルーティングって感じじゃないけど・・・）  => どっちにしろいまは`UIAlertController`つかってるから厳しそう
+
 ## MEMO
 
 - ReSwiftRouterとかReSwiftRecorderあたりでcontributeできないか・・・

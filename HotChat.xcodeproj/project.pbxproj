@@ -31,6 +31,7 @@
 		BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA971CC73F0D00193825 /* APIManager.swift */; };
 		BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */; };
 		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
+		CD0E83951CD83F470063CDB5 /* route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E83941CD83F470063CDB5 /* route.swift */; };
 		CDA155A31CCC5D2400435212 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A21CCC5D2400435212 /* AppState.swift */; };
 		CDA155A61CCC5E4A00435212 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A51CCC5E4A00435212 /* AppActions.swift */; };
 		CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155AA1CCC605100435212 /* AppReducer.swift */; };
@@ -104,6 +105,7 @@
 		BB6CBA971CC73F0D00193825 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMeTableViewCell.xib; sourceTree = "<group>"; };
 		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CD0E83941CD83F470063CDB5 /* route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = route.swift; sourceTree = "<group>"; };
 		CDA155A21CCC5D2400435212 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		CDA155A51CCC5E4A00435212 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		CDA155AA1CCC605100435212 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				CDA155A41CCC5E3100435212 /* actions */,
 				CDA155A81CCC5FD900435212 /* reducers */,
 				CDA155A11CCC5D1400435212 /* states */,
+				CD0E83941CD83F470063CDB5 /* route.swift */,
 			);
 			path = ReSwift;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				CDE566461CCBAE0B00226321 /* TextInputViewController.swift in Sources */,
 				CDE566531CCBCCF300226321 /* HotChatVC.swift in Sources */,
 				CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */,
+				CD0E83951CD83F470063CDB5 /* route.swift in Sources */,
 				BB6CBA7D1CC7237500193825 /* User.swift in Sources */,
 				CDE5663D1CCB005B00226321 /* UIViewExtension.swift in Sources */,
 				CDE566511CCBCBFD00226321 /* UIColorExtension.swift in Sources */,

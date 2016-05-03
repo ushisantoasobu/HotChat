@@ -5,3 +5,4 @@ platform :ios, '9.0'
 
 pod 'ReSwift'
 pod 'ReSwiftRouter'
+pod 'ReSwiftRecorder'

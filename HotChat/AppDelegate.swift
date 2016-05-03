@@ -58,67 +58,6 @@ class RootRoutable: Routable {
     }
 }
 
-extension EventCreateViewController {
-
-    internal func pushRouteSegment(
-        routeElementIdentifier: RouteElementIdentifier,
-        animated: Bool,
-        completionHandler: RoutingCompletionHandler) -> Routable {
-
-        completionHandler()
-        print("UINavigationController - pushRouteSegment")
-        print(routeElementIdentifier)
-
-        if navigationController == nil {
-            print("fdsa")
-        }
-
-        if (routeElementIdentifier == TextInputViewController.identifier) {
-            completionHandler()
-
-            let vc = TextInputViewController()
-            vc.textSetDone = {(text :String) in
-                store.dispatch(SetRouteAction([
-                    AppDelegate.rootIdentifier,
-                    EventCreateViewController.identifier
-                    ]))
-            }
-            navigationController?.pushViewController(TextInputViewController(), animated: true)
-            return navigationController!
-        } else if (routeElementIdentifier == DateSettingViewController.identifier) {
-            completionHandler()
-            let vc = DateSettingViewController()
-            vc.initialDate = store.state.eventCreateState.date
-            vc.dateSetDone = {(date :NSDate) in
-                store.dispatch(SetRouteAction([
-                    AppDelegate.rootIdentifier,
-                    EventCreateViewController.identifier
-                    ]))
-            }
-            navigationController?.pushViewController(vc, animated: true)
-            return navigationController!
-        }
-
-        abort() // ??
-    }
-
-    internal func popRouteSegment(viewControllerIdentifier: RouteElementIdentifier,
-                                animated: Bool,
-                                completionHandler: RoutingCompletionHandler) {
-
-        print("UINavigationController - popRouteSegment")
-        print(viewControllerIdentifier)
-
-        if (viewControllerIdentifier == TextInputViewController.identifier) {
-            completionHandler()
-            navigationController?.popViewControllerAnimated(true)
-        } else if (viewControllerIdentifier == DateSettingViewController.identifier) {
-            completionHandler()
-            navigationController?.popViewControllerAnimated(true)
-        }
-    }
-}
-
 extension UINavigationController: Routable {
 
     public func changeRouteSegment(fromSegment: RouteElementIdentifier,

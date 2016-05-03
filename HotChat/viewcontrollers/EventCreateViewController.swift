@@ -10,7 +10,10 @@ import UIKit
 import ReSwift
 import ReSwiftRouter
 
-class EventCreateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber, Routable {
+class EventCreateViewController: UIViewController,
+    UITableViewDelegate, UITableViewDataSource,
+    AlertViewControllerDelegate,
+    StoreSubscriber, Routable {
 
     static let identifier = "EventCreateViewController"
 
@@ -95,13 +98,14 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
 
+        var route = store.state.navigationState.route
+        route.append(AlertViewController.identifier)
         let event = Event(identifier: 1, name: store.state.eventCreateState.name!, chatCount: 0)
+        store.dispatch(LoadingShowAction(type: .Masked))
         APIManager.sharedInstance.postEvent(event) {
-            store.dispatch(CreateEventResetAction())
+            store.dispatch(LoadingHideAction())
             store.dispatch(
-                SetRouteAction([
-                    RootIdentifier
-                    ])
+                SetRouteAction(route)
             )
         }
     }
@@ -205,6 +209,13 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         default: break
         }
         return cell
+    }
+
+    // MARK: - AlertViewControllerDelegate
+
+    func alertViewButtonTapped() {
+        store.dispatch(CreateEventResetAction())
+        store.dispatch(SetRouteAction([RootIdentifier]))
     }
 
 }

@@ -32,6 +32,8 @@
 		BB6CBA9C1CC7409E00193825 /* ChatMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */; };
 		BB6CBA9E1CC7A5CB00193825 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CBA9D1CC7A5CB00193825 /* Location.swift */; };
 		CD0E83951CD83F470063CDB5 /* route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E83941CD83F470063CDB5 /* route.swift */; };
+		CD432E9A1CD8C12300C1D025 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD432E981CD8C12300C1D025 /* AlertViewController.swift */; };
+		CD432E9B1CD8C12300C1D025 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD432E991CD8C12300C1D025 /* AlertViewController.xib */; };
 		CDA155A31CCC5D2400435212 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A21CCC5D2400435212 /* AppState.swift */; };
 		CDA155A61CCC5E4A00435212 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155A51CCC5E4A00435212 /* AppActions.swift */; };
 		CDA155AB1CCC605100435212 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA155AA1CCC605100435212 /* AppReducer.swift */; };
@@ -105,6 +107,8 @@
 		BB6CBA9A1CC7409E00193825 /* ChatMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMeTableViewCell.xib; sourceTree = "<group>"; };
 		BB6CBA9D1CC7A5CB00193825 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CD0E83941CD83F470063CDB5 /* route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = route.swift; sourceTree = "<group>"; };
+		CD432E981CD8C12300C1D025 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		CD432E991CD8C12300C1D025 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		CDA155A21CCC5D2400435212 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		CDA155A51CCC5E4A00435212 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		CDA155AA1CCC605100435212 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 			children = (
 				CDE566401CCB150F00226321 /* AccountEditViewController.swift */,
 				CDE566411CCB150F00226321 /* AccountEditViewController.xib */,
+				CD432E981CD8C12300C1D025 /* AlertViewController.swift */,
+				CD432E991CD8C12300C1D025 /* AlertViewController.xib */,
 				BB6CBA841CC7240100193825 /* ChatListViewController.swift */,
 				BB6CBA851CC7240100193825 /* ChatListViewController.xib */,
 				CDE566481CCBAE2500226321 /* DateSettingViewController.swift */,
@@ -481,6 +487,7 @@
 				BB6CBA4E1CC7218900193825 /* Main.storyboard in Resources */,
 				BB6CBA901CC7247800193825 /* EventTableViewCell.xib in Resources */,
 				CDE566431CCB150F00226321 /* AccountEditViewController.xib in Resources */,
+				CD432E9B1CD8C12300C1D025 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +576,7 @@
 				CDA155BC1CD10FC700435212 /* ChatLikeButton.swift in Sources */,
 				BB6CBA4B1CC7218900193825 /* ViewController.swift in Sources */,
 				BB6CBA981CC73F0D00193825 /* APIManager.swift in Sources */,
+				CD432E9A1CD8C12300C1D025 /* AlertViewController.swift in Sources */,
 				BB6CBA7B1CC7236C00193825 /* Chat.swift in Sources */,
 				BB6CBA861CC7240100193825 /* ChatListViewController.swift in Sources */,
 				BB6CBA8A1CC7243400193825 /* SearchStartViewController.swift in Sources */,

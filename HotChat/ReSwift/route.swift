@@ -119,6 +119,14 @@ extension UINavigationController: Routable {
             completionHandler()
             pushViewController(ChatListViewController(), animated: true)
             return self
+        } else if (routeElementIdentifier == AlertViewController.identifier) {
+            completionHandler()
+            let alert = AlertViewController()
+            alert.modalPresentationStyle = .OverFullScreen
+            // MEMO : routingまわりをcallbackではなくdelegateでやってみたけど・・・・これはこれできつい・・・ > <
+            alert.delegate = self.viewControllers.last as? AlertViewControllerDelegate
+            presentViewController(alert, animated: false, completion: nil)
+            return self
         }
 
         abort()
@@ -143,12 +151,14 @@ extension UINavigationController: Routable {
         } else if (viewControllerIdentifier == DateSettingViewController.identifier) {
             completionHandler()
             popViewControllerAnimated(true)
-        }  else if (viewControllerIdentifier == EventListTableViewController.identifier) {
+        } else if (viewControllerIdentifier == EventListTableViewController.identifier) {
             completionHandler()
             popViewControllerAnimated(true)
-        }  else if (viewControllerIdentifier == ChatListViewController.identifier) {
+        } else if (viewControllerIdentifier == ChatListViewController.identifier) {
             completionHandler()
             popViewControllerAnimated(true)
+        } else if (viewControllerIdentifier == AlertViewController.identifier) {
+            dismissViewControllerAnimated(false, completion: completionHandler)
         }
     }
 }

@@ -86,7 +86,7 @@ class APIManager {
     }
 
     func postEvent(event :Event, handler :(() -> Void)){
-        let delay = 0.4 * Double(NSEC_PER_SEC)
+        let delay = 0.85 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
             self.locationEvents.append(event)

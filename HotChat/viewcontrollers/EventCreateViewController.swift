@@ -39,9 +39,9 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
         store.subscribe(self) { (state :AppState) -> EventCreateState in
 //            state.na
 
-            let aaa :Int = state.navigationState.getRouteSpecificState(state.navigationState.route)!
-            print("aaa::::::::")
-            print(aaa)
+//            let aaa :Int = state.navigationState.getRouteSpecificState(state.navigationState.route)!
+//            print("aaa::::::::")
+//            print(aaa)
 
             return state.eventCreateState
         }
@@ -88,7 +88,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     func back() {
         store.dispatch(
             SetRouteAction([
-                "UINavigationController"
+                AppDelegate.rootIdentifier
                 ])
         )
     }
@@ -107,7 +107,7 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
             store.dispatch(CreateEventResetAction())
             store.dispatch(
                 SetRouteAction([
-                    "UINavigationController"
+                    AppDelegate.rootIdentifier
                     ])
             )
         }
@@ -118,21 +118,22 @@ class EventCreateViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
-            let vc = DateSettingViewController()
-            vc.initialDate = store.state.eventCreateState.date
-            vc.dateSetDone = {(date :NSDate) in
-                // TODO: weakself
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+            store.dispatch(
+                SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier,
+                    DateSettingViewController.identifier
+                    ])
+            )
             break
         case 1:
-            let vc = TextInputViewController()
-            vc.textSetDone = {(text :String) in
-                // TODO: weakself
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+            store.dispatch(
+                SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier,
+                    TextInputViewController.identifier
+                    ])
+            )
             break
         case 2: break
         default: break

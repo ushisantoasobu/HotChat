@@ -8,14 +8,18 @@
 
 import UIKit
 import ReSwift
+import ReSwiftRouter
 
-class EventListTableViewController: UITableViewController, StoreSubscriber {
+class EventListTableViewController: UITableViewController, StoreSubscriber, Routable {
 
     static let identifier = "EventListTableViewController"
 
-    init(type :EventSearchType) {
+    init() {
         super.init(nibName: "EventListTableViewController", bundle: nil)
-
+        let type :EventSearchType = store.state.navigationState.getRouteSpecificState([
+            AppDelegate.rootIdentifier,
+            EventListTableViewController.identifier
+            ])!
         store.dispatch(EventListChangeTypeAction(type: type))
         store.dispatch(EventListResetEventsAction())
     }
@@ -27,20 +31,11 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
+        self.setupHeader()
         self.setupTableView()
 
         self.load()
     }
-
-//    deinit {
-//        store.dispatch(EventListResetEventsAction())
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,6 +68,14 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
     }
 
     // MARK: - private
+
+    private func setupHeader() {
+        self.navigationItem.title = "イベントを探す"
+
+        let backButton = UIBarButtonItem(title: "<", style: .Plain,
+                                         target: self, action: #selector(EventListTableViewController.back))
+        self.navigationItem.leftBarButtonItem = backButton
+    }
 
     private func setupTableView() {
         let refresh = UIRefreshControl()
@@ -131,6 +134,10 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         self.load(.StatusBar)
     }
 
+    func back() {
+        store.dispatch(SetRouteAction([AppDelegate.rootIdentifier]))
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -166,51 +173,18 @@ class EventListTableViewController: UITableViewController, StoreSubscriber {
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - XXXXX
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = ChatListViewController(event: store.state.eventListState.events![indexPath.row])
-        self.navigationController?.pushViewController(vc, animated: true)
+        let event = store.state.eventListState.events![indexPath.row]
+        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier, ChatListViewController.identifier]
+        store.dispatch(SetRouteSpecificData(route: route, data: event))
+        store.dispatch(SetRouteAction(route))
     }
 
     // MARK: - Table view delegate
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return EventTableViewCell.cellHeight()
     }
 

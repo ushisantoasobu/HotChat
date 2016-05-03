@@ -8,10 +8,12 @@
 
 import UIKit
 import ReSwift
+import ReSwiftRouter
 
 class ChatListViewController: UIViewController,
 UITableViewDelegate, UITableViewDataSource,
-StoreSubscriber {
+StoreSubscriber,
+Routable {
 
     static let identifier = "ChatListViewController"
 
@@ -25,8 +27,15 @@ StoreSubscriber {
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyLabel: UILabel!
 
-    init(event :Event) {
+    init() {
         super.init(nibName: "ChatListViewController", bundle: nil)
+
+        let event :Event = store.state.navigationState.getRouteSpecificState([
+            AppDelegate.rootIdentifier,
+            EventListTableViewController.identifier,
+            ChatListViewController.identifier
+            ])!
+
         store.dispatch(ChatListSetEventAction(event: event))
     }
 
@@ -96,6 +105,10 @@ StoreSubscriber {
 
     private func setupHeader() {
 //        self.navigationItem.title = "チャット一覧"
+
+        let backButton = UIBarButtonItem(title: "<", style: .Plain,
+                                         target: self, action: #selector(ChatListViewController.back))
+        self.navigationItem.leftBarButtonItem = backButton
     }
 
     private func setupTableView() {
@@ -116,6 +129,10 @@ StoreSubscriber {
     private func removeNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(UIKeyboardWillShowNotification)
         NSNotificationCenter.defaultCenter().removeObserver(UIKeyboardWillHideNotification)
+    }
+
+    func back() {
+        store.dispatch(SetRouteAction([AppDelegate.rootIdentifier, EventListTableViewController.identifier]))
     }
 
     private func load() {

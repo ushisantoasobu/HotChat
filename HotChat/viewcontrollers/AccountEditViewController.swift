@@ -92,7 +92,7 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
         store.dispatch(AccountEditResetAction())
         store.dispatch(
             SetRouteAction([
-                "UINavigationController"
+                AppDelegate.rootIdentifier
                 ])
         )
     }
@@ -114,7 +114,7 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
             // TODO: weakself
             store.dispatch(
                 SetRouteAction([
-                    "UINavigationController"
+                    AppDelegate.rootIdentifier
                     ])
             )
         }))
@@ -135,10 +135,19 @@ class AccountEditViewController: UIViewController, StoreSubscriber, Routable {
         let vc = TextInputViewController()
         vc.textSetDone = {(text :String) in
             // TODO: weakself
-            self.navigationController?.popViewControllerAnimated(true)
+            store.dispatch(SetRouteAction([
+                AppDelegate.rootIdentifier
+            ]))
             store.dispatch(AccountEditNameAction(name: text))
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        store.dispatch(
+            SetRouteAction([
+                AppDelegate.rootIdentifier,
+                AccountEditViewController.identifier,
+                TextInputViewController.identifier
+                ])
+        )
     }
 
     @IBAction func facebookSwitchChanged(sender: UISwitch) {

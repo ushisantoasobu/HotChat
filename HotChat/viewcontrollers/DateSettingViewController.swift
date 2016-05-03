@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import ReSwiftRouter
 
 
-
-class DateSettingViewController: UIViewController {
+class DateSettingViewController: UIViewController, Routable {
 
     static let identifier = "DateSettingViewController"
 
@@ -44,6 +44,10 @@ class DateSettingViewController: UIViewController {
     private func setupHeader() {
         self.navigationItem.title = "日時を設定する"
 
+        let backButton = UIBarButtonItem(title: "<", style: .Plain,
+                                         target: self, action: #selector(TextInputViewController.back))
+        self.navigationItem.leftBarButtonItem = backButton
+
         let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
                                            target: self, action: #selector(DateSettingViewController.doneButtonTapped))
         self.navigationItem.rightBarButtonItems = [createButton]
@@ -54,6 +58,13 @@ class DateSettingViewController: UIViewController {
         if self.initialDate != nil {
             self.datePicker.date = self.initialDate!
         }
+    }
+
+    func back() {
+        store.dispatch(SetRouteAction([
+            AppDelegate.rootIdentifier,
+            EventCreateViewController.identifier
+            ]))
     }
 
     func doneButtonTapped() {

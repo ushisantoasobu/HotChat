@@ -50,39 +50,34 @@ class SearchStartViewController: UIViewController, Routable {
     func userButtonTapped() {
         store.dispatch(
             SetRouteAction([
-                "UINavigationController",
+                AppDelegate.rootIdentifier,
                 AccountEditViewController.identifier
             ])
         )
     }
 
     func createButtonTapped() {
-
-        store.dispatch(
-            SetRouteSpecificData(route: ["UINavigationController", EventCreateViewController.identifier],
-                data: 3)
-        )
-
         store.dispatch(
             SetRouteAction([
-                "UINavigationController",
+                AppDelegate.rootIdentifier,
                 EventCreateViewController.identifier
             ])
         )
-
     }
 
 
     // MARK: - IB actions
 
     @IBAction func locationButtonTapped(sender: AnyObject) {
-        let vc = EventListTableViewController(type: .Location)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier]
+        store.dispatch(SetRouteSpecificData(route: route, data: EventSearchType.Location))
+        store.dispatch(SetRouteAction(route))
     }
 
     @IBAction func historyButtonTapped(sender: AnyObject) {
-        let vc = EventListTableViewController(type: .History)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let route = [AppDelegate.rootIdentifier, EventListTableViewController.identifier]
+        store.dispatch(SetRouteSpecificData(route: route, data: EventSearchType.History))
+        store.dispatch(SetRouteAction(route))
     }
 
 }

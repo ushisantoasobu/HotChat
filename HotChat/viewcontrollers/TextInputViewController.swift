@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReSwiftRouter
 
-class TextInputViewController: UIViewController {
+class TextInputViewController: UIViewController, Routable {
 
     static let identifier = "TextInputViewController"
 
@@ -47,9 +48,20 @@ class TextInputViewController: UIViewController {
     private func setupHeader() {
         self.navigationItem.title = "テキストを入力する"
 
+        let backButton = UIBarButtonItem(title: "<", style: .Plain,
+                                         target: self, action: #selector(TextInputViewController.back))
+        self.navigationItem.leftBarButtonItem = backButton
+
         let createButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
                                            target: self, action: #selector(TextInputViewController.doneButtonTapped))
         self.navigationItem.rightBarButtonItems = [createButton]
+    }
+
+    func back() {
+        store.dispatch(SetRouteAction([
+            AppDelegate.rootIdentifier,
+            EventCreateViewController.identifier
+            ]))
     }
 
     func doneButtonTapped() {

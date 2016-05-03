@@ -58,6 +58,67 @@ class RootRoutable: Routable {
     }
 }
 
+extension EventCreateViewController {
+
+    internal func pushRouteSegment(
+        routeElementIdentifier: RouteElementIdentifier,
+        animated: Bool,
+        completionHandler: RoutingCompletionHandler) -> Routable {
+
+        completionHandler()
+        print("UINavigationController - pushRouteSegment")
+        print(routeElementIdentifier)
+
+        if navigationController == nil {
+            print("fdsa")
+        }
+
+        if (routeElementIdentifier == TextInputViewController.identifier) {
+            completionHandler()
+
+            let vc = TextInputViewController()
+            vc.textSetDone = {(text :String) in
+                store.dispatch(SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier
+                    ]))
+            }
+            navigationController?.pushViewController(TextInputViewController(), animated: true)
+            return navigationController!
+        } else if (routeElementIdentifier == DateSettingViewController.identifier) {
+            completionHandler()
+            let vc = DateSettingViewController()
+            vc.initialDate = store.state.eventCreateState.date
+            vc.dateSetDone = {(date :NSDate) in
+                store.dispatch(SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier
+                    ]))
+            }
+            navigationController?.pushViewController(vc, animated: true)
+            return navigationController!
+        }
+
+        abort() // ??
+    }
+
+    internal func popRouteSegment(viewControllerIdentifier: RouteElementIdentifier,
+                                animated: Bool,
+                                completionHandler: RoutingCompletionHandler) {
+
+        print("UINavigationController - popRouteSegment")
+        print(viewControllerIdentifier)
+
+        if (viewControllerIdentifier == TextInputViewController.identifier) {
+            completionHandler()
+            navigationController?.popViewControllerAnimated(true)
+        } else if (viewControllerIdentifier == DateSettingViewController.identifier) {
+            completionHandler()
+            navigationController?.popViewControllerAnimated(true)
+        }
+    }
+}
+
 extension UINavigationController: Routable {
 
     public func changeRouteSegment(fromSegment: RouteElementIdentifier,
@@ -98,12 +159,44 @@ extension UINavigationController: Routable {
             return nav
         } else if (routeElementIdentifier == EventCreateViewController.identifier) {
             completionHandler()
-            let vc = EventCreateViewController() as Routable
             pushViewController(EventCreateViewController(), animated: true)
-            return vc
+            return self
+        } else if (routeElementIdentifier == TextInputViewController.identifier) {
+            completionHandler()
+            let vc = TextInputViewController()
+            vc.textSetDone = {(text :String) in
+                store.dispatch(SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier
+                    ]))
+            }
+            pushViewController(vc, animated: true)
+            return self
+        } else if (routeElementIdentifier == DateSettingViewController.identifier) {
+
+            completionHandler()
+            let vc = DateSettingViewController()
+            vc.initialDate = store.state.eventCreateState.date
+            vc.dateSetDone = {(date :NSDate) in
+                store.dispatch(SetRouteAction([
+                    AppDelegate.rootIdentifier,
+                    EventCreateViewController.identifier
+                    ]))
+            }
+            pushViewController(vc, animated: true)
+            return self
+
+        } else if (routeElementIdentifier == EventListTableViewController.identifier) {
+            completionHandler()
+            pushViewController(EventListTableViewController(), animated: true)
+            return self
+        } else if (routeElementIdentifier == ChatListViewController.identifier) {
+            completionHandler()
+            pushViewController(ChatListViewController(), animated: true)
+            return self
         }
         
-        abort() // ??
+        abort()
     }
 
     public func popRouteSegment(viewControllerIdentifier: RouteElementIdentifier,
@@ -117,6 +210,18 @@ extension UINavigationController: Routable {
             dismissViewControllerAnimated(true, completion: completionHandler)
             return
         } else if (viewControllerIdentifier == EventCreateViewController.identifier) {
+            completionHandler()
+            popViewControllerAnimated(true)
+        } else if (viewControllerIdentifier == TextInputViewController.identifier) {
+            completionHandler()
+            popViewControllerAnimated(true)
+        } else if (viewControllerIdentifier == DateSettingViewController.identifier) {
+            completionHandler()
+            popViewControllerAnimated(true)
+        }  else if (viewControllerIdentifier == EventListTableViewController.identifier) {
+            completionHandler()
+            popViewControllerAnimated(true)
+        }  else if (viewControllerIdentifier == ChatListViewController.identifier) {
             completionHandler()
             popViewControllerAnimated(true)
         }
@@ -138,6 +243,8 @@ extension UINavigationController: Routable {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
+
+    static let rootIdentifier = "root"
 
     var window: UIWindow?
     var loading :LoadingView?
@@ -220,7 +327,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, StoreSubscriber {
         store.dispatch { state, store in
             if state.navigationState.route == [] {
                 return SetRouteAction([
-                    "UINavigationController"
+                    AppDelegate.rootIdentifier
                 ])
             } else {
                 return nil
